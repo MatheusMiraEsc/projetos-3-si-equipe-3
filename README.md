@@ -2,7 +2,7 @@
 
 Este é o repositório do nosso projeto desenvolvido na disciplina de Projetos 03: gestão de projetos. O objetivo do projeto é desenvolver uma plataforma web com o objetivo de automatizar e facilitar a gestão e vendas de ingressos para teatros de Recife. Queremos facilitar a vida tanto dos funcionários de teatros, quanto do público, desde a venda dos ingressos até a coleta de informações sobre espectadores e a geração de relatórios consolidados.
 
-## Apresentação(a ser atualizado)
+## Apresentação
 
 Nosso time é composto por seis membros, cada um trazendo um conjunto único de habilidades e contribuições para o projeto. Abaixo, você pode conhecer um pouco mais sobre cada integrante da equipe.
 
