@@ -17,7 +17,7 @@ Nosso time é composto por seis membros, cada um trazendo um conjunto único de 
 - Processos de construção de software e Gitflow.
 - Construção do backlog do produto
 
-### Karoline...(a ser atualizado)
+### Karoline Andrade 
 **Habilidades:** 
 - Organização
 - Conhecimento em Python
