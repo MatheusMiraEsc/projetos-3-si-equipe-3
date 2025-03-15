@@ -24,9 +24,8 @@ Nosso time é composto por seis membros, cada um trazendo um conjunto único de 
 - Conhecimento em HTML e CSS
 
 **Contribuições para o projeto:**
-- Design de slides.
-- Prototipação Lo-fi e mockup.
-- Organização do cronograma.
+- Documentação geral do projeto.
+- Geração de hipóteses e dúvidas.
 
 ### Jorge Augusto Lacerda de Vasconelos
 **Habilidades:** 
