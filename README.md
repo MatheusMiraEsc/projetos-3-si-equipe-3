@@ -77,31 +77,10 @@ Nosso time é composto por seis membros, cada um trazendo um conjunto único de 
 </a>
 
 
-## Screeancast
+## Screencast  
 
+[🔗 Assistir no Google Drive](https://drive.google.com/file/d/1qsG7LR3z1AAgocyJOQwtKVRx-g7BBCJX/view?usp=drive_link)
 
-*link do screencast*
-
-
-
-## Como Executar(a ser atualizado)
-Para compilar e executar a aplicação, siga os passos abaixo:
-
-1. Clone o repositório:
-    ```bash
-    git clone https://github.com/MatheusMiraEsc/projetos-3-si-equipe-3.git
-    ```
-
-2. Acesse o diretório do projeto:
-    ```bash
-    cd 
-    ```
-    
-
-
-## Como Contribuir
-
-Para contribuir com o projeto, faça um fork do repositório, crie uma branch para sua feature ou correção, e envie um pull request para revisão. Ficaremos felizes em analisar e integrar suas contribuições!
 
 ## Licença
 
