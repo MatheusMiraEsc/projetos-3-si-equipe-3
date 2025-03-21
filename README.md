@@ -71,6 +71,13 @@ Nosso time é composto por seis membros, cada um trazendo um conjunto único de 
 - Pesquisa de soluções similares.
 - Design de slides.
 
+  
+## SKETCH 
+<a href="https://www.figma.com/board/r7o7DKTGKAZRDjI0sXXUfe/Projetos-3?node-id=0-1&t=j7Ymv4OdVUhpAi1l-1">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"  width="100">
+</a>
+
+
 ## LO-FI 
 <a href="https://www.figma.com/design/4wSNGq8mUJAOu6osnInCal/LO-FI---IngressArt?node-id=0-1&t=PW0UFo2tPWoakhqY-1">
     <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"  width="100">
@@ -80,6 +87,7 @@ Nosso time é composto por seis membros, cada um trazendo um conjunto único de 
 ## Screencast  
 
 [🔗 Assistir no Google Drive](https://drive.google.com/file/d/1qsG7LR3z1AAgocyJOQwtKVRx-g7BBCJX/view?usp=drive_link)
+[🔗 Assistir no  YouTube](https://youtu.be/9tPTPO0eYSs)
 
 
 ## Licença
