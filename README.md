@@ -71,6 +71,12 @@ Nosso time é composto por seis membros, cada um trazendo um conjunto único de 
 - Pesquisa de soluções similares.
 - Design de slides.
 
+## LO-FI 
+<a href="https://www.figma.com/design/4wSNGq8mUJAOu6osnInCal/LO-FI---IngressArt?node-id=0-1&t=PW0UFo2tPWoakhqY-1">
+    <img src="https://drive.google.com/file/d/1-dWkWrN-o5cUiL3ri-a61rFiGijHn6KF/view?usp=sharing" width="200">
+</a>
+
+
 ## Screeancast
 
 
