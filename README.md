@@ -83,6 +83,9 @@ Nosso time é composto por seis membros, cada um trazendo um conjunto único de 
     <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"  width="100">
 </a>
 
+## Histórias de usuário
+https://docs.google.com/document/d/1xR2WzLU8VZLKRwLLtpqHdbMdx1_yzDKc0HukmepcWw8/edit?usp=sharing
+
 
 ## Screencast  
 
