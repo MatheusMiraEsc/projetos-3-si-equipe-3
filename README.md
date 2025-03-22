@@ -81,15 +81,13 @@ https://docs.google.com/document/d/1xR2WzLU8VZLKRwLLtpqHdbMdx1_yzDKc0HukmepcWw8/
 
 
 ## Sketch
-<a href="https://www.figma.com/board/r7o7DKTGKAZRDjI0sXXUfe/Projetos-3?node-id=0-1&t=j7Ymv4OdVUhpAi1l-1">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"  width="100">
-</a>
+[🔗 Figma](https://www.figma.com/board/r7o7DKTGKAZRDjI0sXXUfe/Projetos-3?node-id=0-1&t=j7Ymv4OdVUhpAi1l-1)
+    
 
 
 ## LO-FI 
-<a href="https://www.figma.com/design/4wSNGq8mUJAOu6osnInCal/LO-FI---IngressArt?node-id=0-1&t=PW0UFo2tPWoakhqY-1">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"  width="100">
-</a>
+[🔗 Figma](https://www.figma.com/design/4wSNGq8mUJAOu6osnInCal/LO-FI---IngressArt?node-id=0-1&t=PW0UFo2tPWoakhqY-1)
+   
 
 
 ## Screencast  
