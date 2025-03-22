@@ -71,8 +71,16 @@ Nosso time é composto por seis membros, cada um trazendo um conjunto único de 
 - Pesquisa de soluções similares.
 - Design de slides.
 
-  
-## SKETCH 
+## Google Drive 
+
+[🔗 Google Drive](https://drive.google.com/drive/folders/1i39c-0Pjjzu1giN-jWWBlgzjGbyWYoW_?usp=sharing)
+
+
+## Histórias de usuário
+https://docs.google.com/document/d/1xR2WzLU8VZLKRwLLtpqHdbMdx1_yzDKc0HukmepcWw8/edit?usp=sharing
+
+
+## Sketch
 <a href="https://www.figma.com/board/r7o7DKTGKAZRDjI0sXXUfe/Projetos-3?node-id=0-1&t=j7Ymv4OdVUhpAi1l-1">
     <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"  width="100">
 </a>
@@ -82,9 +90,6 @@ Nosso time é composto por seis membros, cada um trazendo um conjunto único de 
 <a href="https://www.figma.com/design/4wSNGq8mUJAOu6osnInCal/LO-FI---IngressArt?node-id=0-1&t=PW0UFo2tPWoakhqY-1">
     <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/Figma-logo.svg"  width="100">
 </a>
-
-## Histórias de usuário
-https://docs.google.com/document/d/1xR2WzLU8VZLKRwLLtpqHdbMdx1_yzDKc0HukmepcWw8/edit?usp=sharing
 
 
 ## Screencast  
