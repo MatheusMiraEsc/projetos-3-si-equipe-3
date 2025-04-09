@@ -4,8 +4,6 @@ Este é o repositório do projeto **IngressArt**, desenvolvido na disciplina **P
 
 O objetivo é criar uma solução de **gestão de teatros na cidade do Recife**, modernizando processos internos e otimizando a experiência do público — desde a **compra de ingressos** até a **análise de dados sobre os espectadores** e **geração de relatórios** para os administradores.
 
----
-
 <details>
 <summary>👥 Equipe</summary>
 
