@@ -104,9 +104,6 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
 
 ---
 
-<details>
-<summary>📄 Licença</summary>
+## 📄 Licença
 
 Este projeto está licenciado sob a [Licença MIT](LICENSE).
-
-</details>
