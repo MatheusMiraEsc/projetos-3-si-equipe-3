@@ -1,5 +1,0 @@
-Meu nome é Karoline de Andrade. Sou estudante do segundo período de Sistemas de Informação na Cesar School. 
-Tenho experiência prévia em Python, com cursos certificados e um projeto concluído no CESAR com a linguagem. 
-Além disso, tenho experiência em dois projetos com HTML e CSS, e um breve entendimento em JavaScript. 
-No momento, estou estudando django e a linguagem C.
-
