@@ -1,4 +1,4 @@
-# IngressArt – Projetos 03
+# 🎭 IngressArt – Projetos 03
 
 Este é o repositório do projeto **IngressArt**, desenvolvido na disciplina **Projetos 03**.
 
