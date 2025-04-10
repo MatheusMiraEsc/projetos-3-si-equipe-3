@@ -71,7 +71,7 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
 <details>
 <summary>📍 Entrega 2</summary>
 
-- **Diagrama de Classes**
+- **Diagrama de Classes**  
   [PNG](https://github.com/user-attachments/assets/8423f246-c365-4797-a3e2-3c2ba59fb9ad)
 
 - Desenvolvimento do protótipo LO-FI  
