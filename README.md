@@ -74,9 +74,8 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
 - **Diagrama de Classes**  
   [PNG](https://github.com/user-attachments/assets/8423f246-c365-4797-a3e2-3c2ba59fb9ad)
 
-- Desenvolvimento do protótipo LO-FI  
-- Evolução das histórias de usuário  
-- Planejamento da arquitetura da solução  
+- **Screencast das histórias**
+  LinK
 
 </details>
 
