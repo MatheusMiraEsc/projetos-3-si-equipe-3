@@ -79,24 +79,99 @@ Nosso time é composto por seis membros, cada um trazendo um conjunto único de 
 
 
 
-## Como Executar(a ser atualizado)
-Para compilar e executar a aplicação, siga os passos abaixo:
+# 🎭 IngressArt - Sistema de Cadastro de Peças de Teatro
 
-1. Clone o repositório:
-    ```bash
-    git clone https://github.com/MatheusMiraEsc/projetos-3-si-equipe-3.git
-    ```
+Este projeto é composto por dois módulos:
 
-2. Acesse o diretório do projeto:
-    ```bash
-    cd 
-    ```
-    
+- **Backend**: Java + Spring Boot + PostgreSQL
+- **Frontend**: React (Vite) com consumo da API Java
+
+---
+
+##  Requisitos para rodar o projeto
+
+### Backend - Java
+- Java 17 ou superior
+- Maven
+- PostgreSQL
+- IDE sugerida: Eclipse
+
+### Frontend - React
+- Node.js (versão 18 ou superior)
+- npm
+
+---
+
+## Estrutura de Pastas 
+IngressArt/ 
+├── java-backend/ <- Projeto Java Spring Boot │ 
+├── src/ │ ├── pom.xml │ 
+└── ... 
+├── teatro-frontend/ <- Projeto React com Vite │
+├── src/ │ 
+├── package.json │ 
+└── ... 
+└── README.md <-
+
+---
+
+## 🐘 Configuração do Banco de Dados (PostgreSQL)
+
+1. Abra o **pgAdmin** ou seu terminal do PostgreSQL.
+2. Crie um banco de dados com o nome: java_backend
+3. Usuário: `postgres`  
+   Senha: `postgres` (ou a que você definiu na instalação)
+
+---
+
+## 🚀 Como rodar o Backend (Spring Boot)
+
+### 1. Abrir o projeto no Eclipse
+
+- Importe a pasta `java-backend` como projeto Maven.
+
+### 2. Configurar o `application.properties`
+
+Verifique se o arquivo `src/main/resources/application.properties` está assim:
+
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/java_backend
+spring.datasource.username=postgres
+spring.datasource.password=postgres
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+````
+
+### Rodar o projeto
+- Clique com o botão direito no projeto > Run As > Spring Boot App
+
+###  Como rodar o Frontend (React + Vite)
+
+1. Abrir o terminal
+Abra um terminal na pasta teatro-frontend.
+
+2. Instalar dependências
+bash
+npm install
+
+3. Rodar o frontend
+bash
+npm run dev
+
+Abra o navegador em:
+http://localhost:5173
 
 
-## Como Contribuir
+### Fluxo de Funcionamento
+- A tela inicial exibe o formulário para cadastrar uma peça de teatro.
 
-Para contribuir com o projeto, faça um fork do repositório, crie uma branch para sua feature ou correção, e envie um pull request para revisão. Ficaremos felizes em analisar e integrar suas contribuições!
+- O formulário envia os dados para o backend em http://localhost:8080/pecas.
+
+- A opção "Visualizar Peças" na navbar lista todas as peças cadastradas consumindo a mesma API.
+   
+
 
 ## Licença
 
