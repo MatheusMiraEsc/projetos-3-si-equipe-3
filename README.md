@@ -1,4 +1,5 @@
 # 🎭 IngressArt – Projetos 03
+### 🚨 Código atualizado na develop
 
 Este é o repositório do projeto **IngressArt**, desenvolvido na disciplina **Projetos 03**.
 
@@ -75,7 +76,8 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
   [PNG](https://github.com/user-attachments/assets/8423f246-c365-4797-a3e2-3c2ba59fb9ad)
 
 - **Screencast das histórias**
-  LinK
+ [Google Drive](https://drive.google.com/file/d/1QlMDrYOWScaeN313fvkxH59cj_X_r5WE/view?usp=drive_link)  
+ [YouTube](https://youtu.be/Tp9b67hkByM)
 
 </details>
 
@@ -103,6 +105,97 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
 
 ---
 
+
+<details>
+<summary> IngressArt - Como rodar?</summary>
+
+Este projeto é composto por dois módulos:
+
+- **Backend**: Java + Spring Boot + PostgreSQL
+- **Frontend**: React (Vite) com consumo da API Java
+
+
+
+###  Requisitos para rodar o projeto
+
+### Backend - Java
+- Java 17 ou superior
+- Maven
+- PostgreSQL
+- IDE sugerida: Eclipse
+
+### Frontend - React
+- Node.js (versão 18 ou superior)
+- npm
+
+---
+
+
+---
+
+### Configuração do Banco de Dados (PostgreSQL)
+
+1. Abra o **pgAdmin** ou seu terminal do PostgreSQL.
+2. Crie um banco de dados com o nome: java_backend
+3. Usuário: `postgres`  
+   Senha: `postgres` (ou a que você definiu na instalação)
+
+---
+
+### Como rodar o Backend (Spring Boot)
+
+### 1. Abrir o projeto no Eclipse
+
+- Importe a pasta `java-backend` como projeto Maven.
+
+### 2. Configurar o `application.properties`
+
+Verifique se o arquivo `src/main/resources/application.properties` está assim:
+
+```properties
+spring.datasource.url=jdbc:postgresql://localhost:5432/java_backend
+spring.datasource.username=postgres
+spring.datasource.password=postgres
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
+````
+
+### Rodar o projeto
+- Clique com o botão direito no projeto > Run As > Spring Boot App
+
+###  Como rodar o Frontend (React + Vite)
+
+1. Abrir o terminal
+Abra um terminal na pasta teatro-frontend.
+
+2. Instalar dependências
+bash
+npm install
+
+3. Rodar o frontend
+bash
+npm run dev
+
+Abra o navegador em:
+http://localhost:5173
+
+
+### Fluxo de Funcionamento
+- A tela inicial exibe o formulário para cadastrar uma peça de teatro.
+
+- O formulário envia os dados para o backend em http://localhost:8080/pecas.
+
+- A opção "Visualizar Peças" na navbar lista todas as peças cadastradas consumindo a mesma API.
+
+</details>
+
+---
+
 ## 📄 Licença
 
 Este projeto está licenciado sob a [Licença MIT](LICENSE).
+
+
+
