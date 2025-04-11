@@ -74,7 +74,8 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
 <summary>📍 Entrega 2</summary>
   
 - **Diagrama de Classes**  
-  ![diagrama ER](https://github.com/user-attachments/assets/6403ceb8-f69b-48fd-8687-336176ffceea)
+![diagrama ER (1)](https://github.com/user-attachments/assets/a02dc759-ebbe-4f58-87c6-0b2c2578d180)
+
 
 - **Screencast das histórias**
  [Google Drive](https://drive.google.com/file/d/1QlMDrYOWScaeN313fvkxH59cj_X_r5WE/view?usp=drive_link)  
