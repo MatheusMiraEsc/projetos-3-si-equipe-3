@@ -51,6 +51,7 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
 <details>
 <summary>📦 Entregas</summary>
 
+
 <details>
 <summary>📍 Entrega 1</summary>
 
