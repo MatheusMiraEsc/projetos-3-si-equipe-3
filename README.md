@@ -51,6 +51,7 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
 <details>
 <summary>📦 Entregas</summary>
 
+
 <details>
 <summary>📍 Entrega 1</summary>
 
@@ -71,7 +72,7 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
 
 <details>
 <summary>📍 Entrega 2</summary>
-
+  
 - **Diagrama de Classes**  
   ![Diagrama ER de banco de dados (pé de galinha) (1)](https://github.com/user-attachments/assets/99a1e105-d110-41dc-9f77-b6f3d6479fa9)
 - **Screencast das histórias**
