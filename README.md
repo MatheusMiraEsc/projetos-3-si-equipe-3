@@ -1,94 +1,122 @@
-# Projetos 03 - IngressArt
+# 🎭 IngressArt – Projetos 03
+### 🚨 Código atualizado na develop
 
-Este é o repositório do nosso projeto desenvolvido na disciplina de Projetos 03: gestão de projetos. O objetivo do projeto é desenvolver uma plataforma web com o objetivo de automatizar e facilitar a gestão e vendas de ingressos para teatros de Recife. Queremos facilitar a vida tanto dos funcionários de teatros, quanto do público, desde a venda dos ingressos até a coleta de informações sobre espectadores e a geração de relatórios consolidados.
+Este é o repositório do projeto **IngressArt**, desenvolvido na disciplina **Projetos 03**.
 
-## Apresentação(a ser atualizado)
+O objetivo é criar uma solução de **gestão de teatros na cidade do Recife**, modernizando processos internos e otimizando a experiência do público — desde a **compra de ingressos** até a **análise de dados sobre os espectadores** e **geração de relatórios** para os administradores.
 
-Nosso time é composto por seis membros, cada um trazendo um conjunto único de habilidades e contribuições para o projeto. Abaixo, você pode conhecer um pouco mais sobre cada integrante da equipe.
+<details>
+<summary>👥 Equipe</summary>
 
-### Bruno Oliveira de Macêdo Filho
-**Habilidades:** 
-- Programação em python
-- Conhecimento de Front-End
-- Conhecimento em processos na engenharia de software
+Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitHubs e contatos:
 
-**Contribuições para o projeto:**
-- Organização e planejamento geral do projeto.
-- Processos de construção de software e Gitflow.
-- Construção do backlog do produto
+- **Bruno Oliveira**  
+  GitHub: [bruno-omf](https://github.com/bruno-omf)  
+  E-mail: bomf@cesar.school
 
-### Karoline...(a ser atualizado)
-**Habilidades:** 
-- Organização
-- Conhecimento em Python
-- Conhecimento em HTML e CSS
+- **Karoline Andrade**  
+  GitHub: [kass200](https://github.com/kass200)  
+  E-mail: kass@cesar.school
 
-**Contribuições para o projeto:**
-- Design de slides.
-- Prototipação Lo-fi e mockup.
-- Organização do cronograma.
+- **Jorge Augusto**  
+  GitHub: [Jaabsolutaa](https://github.com/Jaabsolutaa)  
+  E-mail: jalv@cesar.school
 
-### Jorge Augusto Lacerda de Vasconelos
-**Habilidades:** 
-- Relações Interpessoais 
-- Conhecimento em Python
-- Raciocínio Lógico
+- **Maria Luisa**  
+  GitHub: [malualbuquerqueb](https://github.com/malualbuquerqueb)  
+  E-mail: mlabc@cesar.school
 
-**Contribuições para o projeto:**
-- Documentação geral do projeto.
-- Geração de hipóteses e dúvidas.
-- Ciclo de vida do projeto.
+- **Matheus Miranda**  
+  GitHub: [MatheusMiraEsc](https://github.com/MatheusMiraEsc)  
+  E-mail: mme@cesar.school
 
-### Maria Luisa Albuquerque B. Carvalho
-**Habilidades:** 
-- Conhecimento prático de figma
-- Conhecimento prático de HTML, CSS, JS
-- Designs com Canva
+- **Pedro Augusto**  
+  GitHub: [pedroooojh](https://github.com/pedroooojh)  
+  E-mail: pascd@cesar.school
 
-**Contribuições para o projeto:**
-- Sugestão de ideias.
-- Design geral do projeto.
-- Prototipação Lo-fi e mockup.
+</details>
 
-### Matheus Miranda Escorel
-**Habilidades:** 
-- Planejamento e gestão de pessoas
-- Programação em Python
-- Resolução de problemas
+---
 
-**Contribuições para o projeto:**
-- Organização e planejamento geral do projeto.
-- Documentação geral do projeto.
-- Construção do backlog do produto
+<details>
+<summary>🔗 Links Importantes</summary>
 
-### Pedro Augusto Simões Calazans Dutra
-**Habilidades:** 
-- Conhecimento em Python
-- Conhecimento em edição e manipulação de imagem
-- Resolução de Problemas
+- **Google Drive do Projeto**  
+  [Acessar Google Drive](https://drive.google.com/drive/folders/1i39c-0Pjjzu1giN-jWWBlgzjGbyWYoW_?usp=sharing)
 
-**Contribuições para o projeto:**
-- Documentação geral do projeto.
-- Pesquisa de soluções similares.
-- Design de slides.
+</details>
 
-## Screeancast
+---
 
+<details>
+<summary>📦 Entregas</summary>
 
-*link do screencast*
+<details>
+<summary>📍 Entrega 1</summary>
 
+- **Histórias de Usuário**  
+  [Ver Documento](https://docs.google.com/document/d/1xR2WzLU8VZLKRwLLtpqHdbMdx1_yzDKc0HukmepcWw8/edit?usp=sharing)
+
+- **Sketch Inicial (Figma)**  
+  [Ver no Figma](https://www.figma.com/board/r7o7DKTGKAZRDjI0sXXUfe/Projetos-3?node-id=0-1&t=j7Ymv4OdVUhpAi1l-1)
+
+- **Protótipo LO-FI**  
+  [Ver no Figma](https://www.figma.com/design/4wSNGq8mUJAOu6osnInCal/LO-FI---IngressArt?node-id=0-1&t=PW0UFo2tPWoakhqY-1)
+
+- **Screencast**  
+  [Google Drive](https://drive.google.com/file/d/1qsG7LR3z1AAgocyJOQwtKVRx-g7BBCJX/view?usp=drive_link)  
+  [YouTube](https://youtu.be/9tPTPO0eYSs)
+
+</details>
+
+<details>
+<summary>📍 Entrega 2</summary>
+
+- **Diagrama de Classes**  
+  ![Diagrama ER de banco de dados (pé de galinha) (1)](https://github.com/user-attachments/assets/99a1e105-d110-41dc-9f77-b6f3d6479fa9)
+- **Screencast das histórias**
+ [Google Drive](https://drive.google.com/file/d/1QlMDrYOWScaeN313fvkxH59cj_X_r5WE/view?usp=drive_link)  
+ [YouTube](https://youtu.be/Tp9b67hkByM)
 
 
-# 🎭 IngressArt - Sistema de Cadastro de Peças de Teatro
+</details>
+
+<details>
+<summary>📍 Entrega 3</summary>
+
+- Início da implementação das principais funcionalidades  
+- Integração entre telas e lógica de dados  
+- Testes iniciais e ajustes com base no feedback  
+- Apresentação de um MVP funcional  
+
+</details>
+
+<details>
+<summary>📍 Entrega 4</summary>
+
+- Projeto final consolidado  
+- Testes completos e validação com usuários  
+- Documentação e apresentação final  
+- Preparação para publicação ou uso real  
+
+</details>
+
+</details>
+
+---
+
+
+<details>
+<summary> IngressArt - Como rodar?</summary>
 
 Este projeto é composto por dois módulos:
 
 - **Backend**: Java + Spring Boot + PostgreSQL
 - **Frontend**: React (Vite) com consumo da API Java
 
----
 
-##  Requisitos para rodar o projeto
+
+###  Requisitos para rodar o projeto
 
 ### Backend - Java
 - Java 17 ou superior
@@ -102,20 +130,10 @@ Este projeto é composto por dois módulos:
 
 ---
 
-## Estrutura de Pastas 
-IngressArt/ 
-├── java-backend/ <- Projeto Java Spring Boot │ 
-├── src/ │ ├── pom.xml │ 
-└── ... 
-├── teatro-frontend/ <- Projeto React com Vite │
-├── src/ │ 
-├── package.json │ 
-└── ... 
-└── README.md <-
 
 ---
 
-## 🐘 Configuração do Banco de Dados (PostgreSQL)
+### Configuração do Banco de Dados (PostgreSQL)
 
 1. Abra o **pgAdmin** ou seu terminal do PostgreSQL.
 2. Crie um banco de dados com o nome: java_backend
@@ -124,7 +142,7 @@ IngressArt/
 
 ---
 
-## 🚀 Como rodar o Backend (Spring Boot)
+### Como rodar o Backend (Spring Boot)
 
 ### 1. Abrir o projeto no Eclipse
 
@@ -170,6 +188,16 @@ http://localhost:5173
 - O formulário envia os dados para o backend em http://localhost:8080/pecas.
 
 - A opção "Visualizar Peças" na navbar lista todas as peças cadastradas consumindo a mesma API.
+
+</details>
+
+---
+
+## 📄 Licença
+
+Este projeto está licenciado sob a [Licença MIT](LICENSE).
+
+
    
 
 
