@@ -1,5 +1,4 @@
 # 🎭 IngressArt – Projetos 03
-### 🚨 Código atualizado na develop
 
 Este é o repositório do projeto **IngressArt**, desenvolvido na disciplina **Projetos 03**.
 
