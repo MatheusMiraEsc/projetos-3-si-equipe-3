@@ -117,9 +117,38 @@ public class MenuTeatro {
     
 
 
-    private void listarPecas() {
-        // Implementação de listagem de peças
+   private void listarPecas() {
+    try {
+        // Buscar todas as peças cadastradas
+        List<Evento> eventos = eventoDAO.findAll();  // Método que busca todos os eventos no banco
+
+        if (eventos.isEmpty()) {
+            System.out.println("Nenhuma peça cadastrada.");
+            return;
+        }
+
+        System.out.println("--- Lista de Peças ---");
+        
+        // Exibir informações de cada peça
+        for (Evento evento : eventos) {
+            // Buscar sala relacionada ao evento
+            Sala sala = salaDAO.findById(evento.getId_sala());
+            if (sala != null) {
+                // Mostrar as informações da peça
+                System.out.printf("ID: %d | Nome: %s | Descrição: %s | Data de Início: %s | Sala: %s (Capacidade: %d)\n",
+                    evento.getId_evento(), evento.getNomeEvento(), evento.getDescricao(),
+                    evento.getData_inicio(), sala.getTipo(), sala.getCapacidade());
+            } else {
+                // Caso a sala não seja encontrada
+                System.out.printf("ID: %d | Nome: %s | Descrição: %s | Data de Início: %s | Sala não encontrada\n",
+                    evento.getId_evento(), evento.getNomeEvento(), evento.getDescricao(), evento.getData_inicio());
+            }
+        }
+    } catch (SQLException ex) {
+        System.err.println("Erro ao listar peças: " + ex.getMessage());
     }
+}
+
 
     private void cadastrarSala() {
         try {
