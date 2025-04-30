@@ -61,6 +61,20 @@ public class SessaoDAO {
         }
         return null;
     }
+    public List<Sessao> findAllByEventoId(int eventoId)throws SQLException{
+        String sql = "SELECT * FROM sessao WHERE id_evento = ?";
+        List<Sessao> sessoes = new ArrayList<>();
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, eventoId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    sessoes.add(mapRowToSessao(rs));
+                }
+            }
+        }
+        return sessoes;
+    }
 
     // Lista todas as sessões vinculadas a uma sala
     public List<Sessao> findBySalaId(int idSala) throws SQLException {
