@@ -2,6 +2,8 @@ package grupo3.java_backend.controller;
 
 import java.sql.SQLException;
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import grupo3.java_backend.dao.PessoaDAO;
 import grupo3.java_backend.model.Pessoa;
@@ -37,7 +39,10 @@ public class ControleLogin {
         System.out.print("Email: "); p.setEmail(scanner.nextLine());
         System.out.print("CPF: "); p.setCpf(scanner.nextLine());
         System.out.print("Telefone: "); p.setTelefone(scanner.nextLine());
-        System.out.print("Data de Nascimento (YYYY-MM-DD): "); p.setData_nascimento(java.time.LocalDate.parse(scanner.nextLine()));
+        System.out.print("Data de Nascimento (DDMMYYYY): "); 
+        String dataStr = scanner.nextLine();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("ddMMyyyy");
+        p.setData_nascimento(LocalDate.parse(dataStr, formatter));
         System.out.print("Senha: "); p.setSenha(scanner.nextLine());
         p.setTipo_usuario("CLIENTE");
 

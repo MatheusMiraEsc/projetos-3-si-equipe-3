@@ -3,20 +3,27 @@ import java.time.LocalDateTime;
 
 public class Sessao {
     private int id_sessao;
+    private int id_peca;
     private LocalDateTime data_inicio;
-    private LocalDateTime data_fim;
-    private float preco_sessao;
+    private double preco_sessao;
     private int num_ingressos_disp;
-    private int id_evento;
     private int id_sala;
 
-    // Getters e Setters
+    // Getters and Setters
     public int getId_sessao() {
         return id_sessao;
     }
 
     public void setId_sessao(int id_sessao) {
         this.id_sessao = id_sessao;
+    }
+
+    public int getId_peca() {
+        return id_peca;
+    }
+
+    public void setId_peca(int id_peca) {
+        this.id_peca = id_peca;
     }
 
     public LocalDateTime getData_inicio() {
@@ -27,19 +34,11 @@ public class Sessao {
         this.data_inicio = data_inicio;
     }
 
-    public LocalDateTime getData_fim() {
-        return data_fim;
-    }
-
-    public void setData_fim(LocalDateTime data_fim) {
-        this.data_fim = data_fim;
-    }
-
-    public float getPreco_sessao() {
+    public double getPreco_sessao() {
         return preco_sessao;
     }
 
-    public void setPreco_sessao(float preco_sessao) {
+    public void setPreco_sessao(double preco_sessao) {
         this.preco_sessao = preco_sessao;
     }
 
@@ -49,14 +48,6 @@ public class Sessao {
 
     public void setNum_ingressos_disp(int num_ingressos_disp) {
         this.num_ingressos_disp = num_ingressos_disp;
-    }
-
-    public int getId_evento() {
-        return id_evento;
-    }
-
-    public void setId_evento(int id_evento) {
-        this.id_evento = id_evento;
     }
 
     public int getId_sala() {

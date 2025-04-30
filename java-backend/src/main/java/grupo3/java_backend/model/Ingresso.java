@@ -7,10 +7,10 @@ public class Ingresso {
     private int id_ingresso;
     private int id_assento;
     private String tipo_ingresso;
-    private float preco_ingresso;
+    private double preco_ingresso;
     private boolean status;
     private int id_cliente;
-    private int id_sessao;
+    private int id_peca;
 
     public int getId_ingresso() {
         return id_ingresso;
@@ -36,15 +36,15 @@ public class Ingresso {
         this.tipo_ingresso = tipo_ingresso;
     }
 
-    public float getPreco_ingresso() {
+    public double getPreco_ingresso() {
         return preco_ingresso;
     }
 
-    public void setPreco_ingresso(float preco_ingresso) {
+    public void setPreco_ingresso(double preco_ingresso) {
         this.preco_ingresso = preco_ingresso;
     }
 
-    public boolean getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
@@ -60,12 +60,12 @@ public class Ingresso {
         this.id_cliente = id_cliente;
     }
 
-    public int getId_sessao() {
-        return id_sessao;
+    public int getId_peca() {
+        return id_peca;
     }
 
-    public void setId_sessao(int id_sessao) {
-        this.id_sessao = id_sessao;
+    public void setId_peca(int id_peca) {
+        this.id_peca = id_peca;
     }
 
     public void reservarAssento() {

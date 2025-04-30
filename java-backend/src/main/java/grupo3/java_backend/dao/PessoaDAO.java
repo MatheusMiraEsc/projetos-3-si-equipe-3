@@ -14,7 +14,7 @@ import grupo3.java_backend.model.Pessoa;
 
 public class PessoaDAO {
     public void insert(Pessoa p) throws SQLException {
-        String sql = "INSERT INTO pessoa (nome, email, cpf, telefone, data_nascimento,senha, tipo_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO pessoa (nome, email, cpf, telefone, data_nascimento, senha, tipo_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (Connection conn = ConnectionFactory.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, p.getNome());
@@ -22,8 +22,8 @@ public class PessoaDAO {
             stmt.setString(3, p.getCpf());
             stmt.setString(4, p.getTelefone());
             stmt.setDate(5, Date.valueOf(p.getData_nascimento()));
-            stmt.setString(7, p.getSenha());
-            stmt.setString(8, p.getTipo_usuario());
+            stmt.setString(6, p.getSenha());
+            stmt.setString(7, p.getTipo_usuario());
             stmt.executeUpdate();
             try (ResultSet rs = stmt.getGeneratedKeys()) {
                 if (rs.next()) p.setId_pessoa(rs.getInt(1));

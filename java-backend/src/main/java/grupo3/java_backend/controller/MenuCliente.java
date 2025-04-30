@@ -10,6 +10,8 @@ import grupo3.java_backend.model.Pessoa;
 import grupo3.java_backend.model.Sessao;
 import grupo3.java_backend.model.Ingresso;
 import grupo3.java_backend.model.Venda;
+import grupo3.java_backend.model.Peca;
+import grupo3.java_backend.dao.PecaDAO;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -21,6 +23,7 @@ public class MenuCliente {
     private SessaoDAO sessaoDAO = new SessaoDAO();
     private IngressoDAO ingressoDAO = new IngressoDAO();
     private VendaDAO vendaDAO = new VendaDAO();
+    private PecaDAO pecaDAO = new PecaDAO();
 
     public void iniciar(Pessoa cliente) {
         while (true) {
@@ -52,33 +55,29 @@ public class MenuCliente {
 
     private void visualizarPecas(Pessoa cliente) {
         try {
-            List<Evento> eventos = eventoDAO.findAll();
-            for (Evento e : eventos) {
-                System.out.printf("%d - %s (%s)%n", e.getId_evento(), e.getNomeEvento(), e.getData_inicio());
+            List<Peca> pecas = pecaDAO.findAll();
+            for (Peca p : pecas) {
+                System.out.printf("%d - %s (%s %s)%n", 
+                    p.getId_peca(), 
+                    p.getNome(), 
+                    p.getData(), 
+                    p.getHora());
             }
             System.out.print("Escolha a peça (ID) ou 0 para voltar: ");
             int id = Integer.parseInt(scanner.nextLine());
             if (id == 0) return;
 
-            Evento e = eventoDAO.findById(id);
-            System.out.println("Descrição: " + e.getDescricao());
-
-            // Chave: buscar a Sessão correta
-            Sessao s = sessaoDAO.findByEventoId(e.getId_evento());
-            if (s == null) {
-                System.out.println("Sessão não encontrada para esta peça.");
-                return;
-            }
-
-            System.out.println("Valor: R$" + s.getPreco_sessao());
+            Peca peca = pecaDAO.findById(id);
+            System.out.println("Descrição: " + peca.getDescricao());
+            System.out.println("Valor: R$" + peca.getValor_ingresso());
             System.out.println("1 - Comprar ingresso");
             System.out.println("0 - Voltar");
             if ("1".equals(scanner.nextLine())) {
-                realizarCompra(cliente, e, s);
+                realizarCompra(cliente, peca);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-            System.err.println("Erro ao acessar eventos: " + ex.getMessage());
+            System.err.println("Erro ao acessar peças: " + ex.getMessage());
         }
     }
 
@@ -86,39 +85,19 @@ public class MenuCliente {
         System.out.println("Funcionalidade 'Meus Eventos' ainda não implementada.\n");
     }
 
-    private void realizarCompra(Pessoa cliente, Evento evento, Sessao sessao) {
-        System.out.println("Chave PIX: 0001.2345.6789-00");
-        String resp;
-        do {
-            System.out.print("Seu pagamento foi efetuado? [S/N]: ");
-            resp = scanner.nextLine();
-        } while (!"S".equalsIgnoreCase(resp));
-
+    private void realizarCompra(Pessoa cliente, Peca peca) {
         try {
-            Venda v = new Venda();
-            v.setData_venda(java.time.LocalDateTime.now());
-            v.setForma_pagamento("PIX");
-            v.setId_cliente(cliente.getId_pessoa());
-            vendaDAO.insert(v);
-
-            Ingresso i = new Ingresso();
-            i.setId_assento(1);
-            i.setTipo_ingresso("Único");
-            i.setPreco_ingresso(sessao.getPreco_sessao());
-            i.setStatus(true);
-            i.setId_cliente(cliente.getId_pessoa());
-            i.setId_sessao(sessao.getId_sessao());
-            ingressoDAO.insert(i);
-
-            sessao.setNum_ingressos_disp(sessao.getNum_ingressos_disp() - 1);
-            sessaoDAO.update(sessao);
-
-            System.out.printf("Compra realizada! Peça: %s | Data: %s | Sala: %d | Valor: R$%.2f%n",
-                evento.getNomeEvento(), sessao.getData_inicio(), sessao.getId_sala(), i.getPreco_ingresso());
-            System.out.println("Código: " + java.util.UUID.randomUUID().toString().substring(0, 8));
+            Ingresso ingresso = new Ingresso();
+            ingresso.setId_cliente(cliente.getId_pessoa());
+            ingresso.setId_peca(peca.getId_peca());
+            ingresso.setTipo_ingresso("Inteira");
+            ingresso.setPreco_ingresso(peca.getValor_ingresso());
+            ingresso.setStatus(true);
+            
+            ingressoDAO.insert(ingresso);
+            System.out.println("Ingresso comprado com sucesso!");
         } catch (SQLException ex) {
-            ex.printStackTrace();
-            System.err.println("Erro na compra: " + ex.getMessage());
+            System.err.println("Erro ao comprar ingresso: " + ex.getMessage());
         }
     }
 }
