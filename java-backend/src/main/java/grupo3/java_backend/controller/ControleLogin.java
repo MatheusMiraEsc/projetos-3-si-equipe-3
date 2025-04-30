@@ -1,9 +1,10 @@
 package grupo3.java_backend.controller;
 
-import grupo3.java_backend.dao.PessoaDAO;
-import grupo3.java_backend.model.Pessoa;
 import java.sql.SQLException;
 import java.util.Scanner;
+
+import grupo3.java_backend.dao.PessoaDAO;
+import grupo3.java_backend.model.Pessoa;
 
 public class ControleLogin {
     private PessoaDAO pessoaDAO = new PessoaDAO();
@@ -37,7 +38,6 @@ public class ControleLogin {
         System.out.print("CPF: "); p.setCpf(scanner.nextLine());
         System.out.print("Telefone: "); p.setTelefone(scanner.nextLine());
         System.out.print("Data de Nascimento (YYYY-MM-DD): "); p.setData_nascimento(java.time.LocalDate.parse(scanner.nextLine()));
-        System.out.print("Endereco: "); p.setEndereco(scanner.nextLine());
         System.out.print("Senha: "); p.setSenha(scanner.nextLine());
         p.setTipo_usuario("CLIENTE");
 
