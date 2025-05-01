@@ -1,28 +1,23 @@
 package grupo3.java_backend.model;
 
-import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-@Entity
 public class Peca {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private int id_peca;
     private String nome;
     private String descricao;
     private LocalDate data;
     private LocalTime hora;
-    private Double valorIngresso;
+    private double valor_ingresso;
 
-    public Long getId() {
-        return id;
+    // Getters and Setters
+    public int getId_peca() {
+        return id_peca;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setId_peca(int id_peca) {
+        this.id_peca = id_peca;
     }
 
     public String getNome() {
@@ -57,11 +52,11 @@ public class Peca {
         this.hora = hora;
     }
 
-    public Double getValorIngresso() {
-        return valorIngresso;
+    public double getValor_ingresso() {
+        return valor_ingresso;
     }
 
-    public void setValorIngresso(Double valorIngresso) {
-        this.valorIngresso = valorIngresso;
+    public void setValor_ingresso(double valor_ingresso) {
+        this.valor_ingresso = valor_ingresso;
     }
-}
+} 
