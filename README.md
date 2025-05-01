@@ -89,7 +89,10 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
 - Início da implementação das principais funcionalidades  
 - Integração entre telas e lógica de dados  
 - Testes iniciais e ajustes com base no feedback  
-- Apresentação de um MVP funcional  
+- Apresentação de um MVP funcional
+
+- **Screencast**
+ [YouTube](https://www.youtube.com/watch?v=zHXmr4WWMyQ)
 
 </details>
 
