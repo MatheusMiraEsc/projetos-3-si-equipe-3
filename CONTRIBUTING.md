@@ -1,10 +1,10 @@
-### Estrutura de Branches
+# Estrutura de Branches
 
-- **`main`**: 
-  - É a branch principal e sagrada. 
+- **`main`**:
+  - É a branch principal e sagrada.
   - Nenhum código deve ser mergeado diretamente nesta branch até o final do projeto, quando todo o desenvolvimento estiver concluído e testado.
   
-- **`develop`**: 
+- **`develop`**:
   - É a branch secundária onde o desenvolvimento contínuo ocorre.
   - Todas as novas funcionalidades devem ser mergeadas na `develop` através de Pull Requests (PR).
 
@@ -13,7 +13,7 @@
   - As branches de funcionalidades seguem o padrão de nome `feature/nome-da-funcionalidade`.
   - Exemplos: `feature/autenticacao`, `feature/dashboard`, `feature/api-integracao`.
 
-### Fluxo de Trabalho
+## Fluxo de Trabalho
 
 1. **Criar Branch de Funcionalidade**:
    - Sempre crie uma nova branch a partir da `develop`.
@@ -24,9 +24,11 @@
 
 3. **Commits**:
    - Use o padrão de commits com uma estrutura que descreva claramente a mudança:
+
      ```
      [Tipo]: Descrição da mudança
      ```
+
      - **Tipos comuns**:
        - `feat`: Adição de uma nova funcionalidade.
        - `fix`: Correção de bugs.
