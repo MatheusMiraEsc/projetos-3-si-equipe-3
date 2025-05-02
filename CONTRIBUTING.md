@@ -25,7 +25,7 @@
 3. **Commits**:
    - Use o padrão de commits com uma estrutura que descreva claramente a mudança:
 
-     ```
+     ```plaintext
      [Tipo]: Descrição da mudança
      ```
 
