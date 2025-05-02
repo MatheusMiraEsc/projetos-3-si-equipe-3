@@ -11,27 +11,27 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
 
 - **Bruno Oliveira**  
   GitHub: [bruno-omf](https://github.com/bruno-omf)  
-  E-mail: bomf@cesar.school
+  E-mail: <bomf@cesar.school>
 
 - **Karoline Andrade**  
   GitHub: [kass200](https://github.com/kass200)  
-  E-mail: kass@cesar.school
+  E-mail: <kass@cesar.school>
 
 - **Jorge Augusto**  
   GitHub: [Jaabsolutaa](https://github.com/Jaabsolutaa)  
-  E-mail: jalv@cesar.school
+  E-mail: <jalv@cesar.school>
 
 - **Maria Luisa**  
   GitHub: [malualbuquerqueb](https://github.com/malualbuquerqueb)  
-  E-mail: mlabc@cesar.school
+  E-mail: <mlabc@cesar.school>
 
 - **Matheus Miranda**  
   GitHub: [MatheusMiraEsc](https://github.com/MatheusMiraEsc)  
-  E-mail: mme@cesar.school
+  E-mail: <mme@cesar.school>
 
 - **Pedro Augusto**  
   GitHub: [pedroooojh](https://github.com/pedroooojh)  
-  E-mail: pascd@cesar.school
+  E-mail: <pascd@cesar.school>
 
 </details>
 
@@ -49,7 +49,6 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
 
 <details>
 <summary>📦 Entregas</summary>
-
 
 <details>
 <summary>📍 Entrega 1</summary>
@@ -80,7 +79,6 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
  [Google Drive](https://drive.google.com/file/d/1QlMDrYOWScaeN313fvkxH59cj_X_r5WE/view?usp=drive_link)  
  [YouTube](https://youtu.be/Tp9b67hkByM)
 
-
 </details>
 
 <details>
@@ -110,19 +108,19 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
 
 ---
 
-
 <details>
 <summary> IngressArt - Como rodar?</summary>
 
+## Requisitos para rodar o projeto
 
-
-###  Requisitos para rodar o projeto
 Requisitos:
+
 - Java 17 ou superior
 - PostgreSQL instalado
 - IDE (Eclipse, VS Code etc.)
 
 Passos:
+
 - Clone ou baixe este repositório
 - No PostgreSQL, crie o banco:
   - CREATE DATABASE ingressart;
@@ -130,24 +128,26 @@ Passos:
   - Configure a conexão com o banco no arquivo ConnectionFactory.java:
   - private static final String USER = "seu_usuario";
   - private static final String PASS = "sua_senha";
- 
-    
+
 ### Rodar o projeto
-- Compile e clique com o botão direito na App.java > Run As Java 
+
+- Compile e clique com o botão direito na App.java > Run As Java
 - O sistema será iniciado via terminal com menus de interação
 
 ---
 
-
 ### Fluxo de Funcionamento
+
 Acesso Inicial
 Ao iniciar o sistema, o usuário escolhe:
+
 - Acessar como Teatro (Administrador)
 - Acessar como Cliente
 - Acessar sem cadastro
 - Sair
 
 Teatro (Administrador)
+
 - Menu disponível:
 - Cadastrar Peça
   - Listar Peças
@@ -160,12 +160,14 @@ Teatro (Administrador)
 - Sair
 
 Detalhes:
+
 - Cada peça está vinculada a uma sala e possui sessões.
 - A capacidade da sessão segue a capacidade da sala.
 - A edição e exclusão de peças afetam também suas sessões.
 
 Cliente
 Acesso pode ser com ou sem login.
+
 - Sem login:
 - Visualiza peças cadastradas
 - Vê detalhes da peça
@@ -184,4 +186,3 @@ Pode acessar a opção Meus Eventos (em construção)
 ## 📄 Licença
 
 Este projeto está licenciado sob a [Licença MIT](LICENSE).
-
