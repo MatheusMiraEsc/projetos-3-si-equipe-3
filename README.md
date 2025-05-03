@@ -150,7 +150,7 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
     Após a compilação, execute o seguinte comando para iniciar o projeto:
   
     ```bash
-    mvn exec:java -Dexec.mainClass="ingressart.teatro.Main"
+    java -jar target/ingressart-teatro-1.0.0.jar
     ```
 6. **Acesse o sistema:**
     Após a execução, o sistema estará disponível no terminal :D
