@@ -1,33 +1,9 @@
-# Compiled class file
-*.class
-
-# Log file
-*.log
-
-# BlueJ files
-*.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
-
-# Maven
+### Maven ###
 target/
+dependency-reduced-pom.xml
+pom.xml.versionsBackup
 
-# IntelliJ IDEA
-*.iml
-.idea/
-*.iws
-*.ipr
-
-# VS Code
-.vscode/
-
-# Eclipse
-*.project
-*.classpath
-.settings/
-
-# Package Files #
+### Build outputs ###
 *.jar
 *.war
 *.nar
@@ -36,6 +12,41 @@ target/
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+### Compiled class files ###
+*.class
+
+### Logs ###
+*.log
 hs_err_pid*
 replay_pid*
+
+### IDEs ###
+# IntelliJ
+*.iml
+.idea/
+*.iws
+*.ipr
+*.ids
+*.orig
+
+# Eclipse
+.project
+.classpath
+.settings/
+bin/
+
+# VS Code
+.vscode/
+
+# BlueJ
+*.ctxt
+
+### System files ###
+*.bak
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+### Mobile Tools for Java (J2ME) ###
+.mtj.tmp/
