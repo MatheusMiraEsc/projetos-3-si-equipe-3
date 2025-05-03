@@ -130,12 +130,14 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
    git clone https://github.com/MatheusMiraEsc/projetos-3-si-equipe-3.git
    cd projetos-3-si-equipe-3
    ```
+
 2. **Crie um banco de dados no PostgreSQL:**
   Abra o terminal do PostgreSQL (psql), logue com o usuario postgres e senha postgres e execute o seguinte comando:
 
    ```sql
    CREATE DATABASE ingressart;
    ```
+
 3. **Configure o banco de dados:**
   Abra o arquivo schema.sql na pasta `src/main/java/ingressart/teatro/database` e execute os comandos SQL contidos nele no terminal do PostgreSQL (psql) para criar as tabelas necessárias.
 
@@ -146,12 +148,14 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
    ```bash
    mvn clean install
    ```
+
 5. **Execute o projeto:**
     Após a compilação, execute o seguinte comando para iniciar o projeto:
   
     ```bash
     java -jar target/ingressart-teatro-1.0.0.jar
     ```
+
 6. **Acesse o sistema:**
     Após a execução, o sistema estará disponível no terminal :D
 
