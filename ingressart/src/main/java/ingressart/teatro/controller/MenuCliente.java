@@ -9,9 +9,9 @@ import ingressart.teatro.dao.VendaDAO;
 import ingressart.teatro.model.Ingresso;
 import ingressart.teatro.model.Peca;
 import ingressart.teatro.model.Pessoa;
-import ingressart.teatro.model.Evento;
-import ingressart.teatro.model.Sessao;
-import ingressart.teatro.model.Venda;
+// import ingressart.teatro.model.Evento;
+// import ingressart.teatro.model.Sessao;
+// import ingressart.teatro.model.Venda;
 
 
 

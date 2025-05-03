@@ -2,8 +2,8 @@ package ingressart.teatro.dao;
 
 import ingressart.teatro.model.Venda;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+// import java.util.ArrayList;
+// import java.util.List;
 
 public class VendaDAO {
     public void insert(Venda v) throws SQLException {
