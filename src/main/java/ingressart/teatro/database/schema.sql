@@ -82,3 +82,13 @@ CREATE TABLE pagamento (
     metodo_pagamento VARCHAR(50),
     FOREIGN KEY (id_venda) REFERENCES venda(id_venda)
 );
+
+-- Tabela peca
+CREATE TABLE peca (
+    id_peca SERIAL PRIMARY KEY,
+    nome VARCHAR(150) NOT NULL,
+    descricao TEXT,
+    data DATE NOT NULL,
+    hora TIME NOT NULL,
+    valor_ingresso FLOAT NOT NULL
+);
