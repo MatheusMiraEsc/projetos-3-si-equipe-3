@@ -111,28 +111,53 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
 <details>
 <summary> IngressArt - Como rodar?</summary>
 
-## Requisitos para rodar o projeto
+## ✅ Requisitos para rodar o projeto
 
-Requisitos:
+**Requisitos:**
 
-- Java 17 ou superior
-- PostgreSQL instalado
-- IDE (Eclipse, VS Code etc.)
+- Java 17 ou superior  
+- PostgreSQL instalado e em execução  
+- Maven instalado!!  
+- IDE compatível com Java (IntelliJ IDEA, Eclipse, VS Code etc.)
 
-Passos:
+---
 
-- Clone ou baixe este repositório
-- No PostgreSQL, crie o banco:
-  - CREATE DATABASE ingressart;
-  - Execute os scripts SQL da pasta database/ para criar as tabelas
-  - Configure a conexão com o banco no arquivo ConnectionFactory.java:
-  - private static final String USER = "seu_usuario";
-  - private static final String PASS = "sua_senha";
+## ▶️ Passos para executar o projeto
 
-### Rodar o projeto
+1. **Clone o repositório:**
 
-- Compile e clique com o botão direito na App.java > Run As Java
-- O sistema será iniciado via terminal com menus de interação
+   ```bash
+   git clone https://github.com/MatheusMiraEsc/projetos-3-si-equipe-3.git
+   cd projetos-3-si-equipe-3
+   ```
+
+2. **Crie um banco de dados no PostgreSQL:**
+  Abra o terminal do PostgreSQL (psql), logue com o usuario postgres e senha postgres e execute o seguinte comando:
+
+   ```sql
+   CREATE DATABASE ingressart;
+   ```
+
+3. **Configure o banco de dados:**
+  Abra o arquivo schema.sql na pasta `src/main/java/ingressart/teatro/database` e execute os comandos SQL contidos nele no terminal do PostgreSQL (psql) para criar as tabelas necessárias.
+
+4. **Compile o projeto:**
+   No terminal da sua IDE, execute o seguinte comando para compilar o projeto:
+   Antes, certifique-se de que o Maven está instalado e configurado corretamente e se você está na pasta raiz do projeto.
+
+   ```bash
+   mvn clean install
+   ```
+
+5. **Execute o projeto:**
+    Após a compilação, execute o seguinte comando para iniciar o projeto:
+  
+    ```bash
+    java -jar target/ingressart-teatro-1.0.0.jar
+    ```
+
+6. **Acesse o sistema:**
+    Após a execução, o sistema estará disponível no terminal :D
 
 ---
 
