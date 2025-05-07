@@ -31,8 +31,9 @@ public class MenuCliente {
         while (true) {
             System.out.println("--- Menu Cliente ---");
             System.out.println("1 - Visualizar Peças");
-            System.out.println("2 - Meus Eventos");
-            System.out.println("3 - Editar Perfil");
+            System.out.println("2 - Buscar Peça");
+            System.out.println("3 - Meus Eventos");
+            System.out.println("4 - Editar Perfil");
             System.out.println("0 - Sair");
             System.out.print("Opção: ");
             String opc = scanner.nextLine();
@@ -42,9 +43,12 @@ public class MenuCliente {
                     visualizarPecas(cliente);
                     break;
                 case "2":
-                    listarMeusEventos(cliente);
+                    buscarPeca(cliente);
                     break;
                 case "3":
+                    listarMeusEventos(cliente);
+                    break;
+                case "4":
                     System.out.println("Funcionalidade editar perfil...");
                     break;
                 case "0":
@@ -82,6 +86,45 @@ public class MenuCliente {
             System.err.println("Erro ao acessar peças: " + ex.getMessage());
         }
     }
+
+    private void buscarPeca(Pessoa cliente){
+        try {
+            List<Peca> pecas = pecaDAO.findAll();
+            Peca peca = null;
+            while(peca ==null) {
+                System.out.println("Digite o nome da peça que deseja buscar (ou 0 para voltar): ");
+                String nome_peca = scanner.nextLine();
+                if("0".equals(nome_peca)) return;
+                for(Peca p : pecas){
+                    if (nome_peca.equalsIgnoreCase(p.getNome())){
+                        peca = p;
+                        break;
+                    }
+                }
+                if (peca == null) {
+                    System.out.println("Peça não encontrada :(");
+                }
+            }
+            
+        System.out.printf("%d - %s (%s %s)%n", 
+        peca.getId_peca(), 
+        peca.getNome(), 
+        peca.getData(), 
+        peca.getHora());
+    System.out.println("Descrição: " + peca.getDescricao());
+    System.out.println("Valor: R$" + peca.getValor_ingresso());
+    System.out.println("1 - Comprar ingresso");
+    System.out.println("0 - Voltar");
+    if ("1".equals(scanner.nextLine())) {
+        realizarCompra(cliente, peca);
+    }
+
+} catch (SQLException ex) {
+    ex.printStackTrace();
+    System.err.println("Erro ao acessar peças: " + ex.getMessage());
+}
+}
+
 
     private void listarMeusEventos(Pessoa cliente) {
         System.out.println("Funcionalidade 'Meus Eventos' ainda não implementada.\n");
