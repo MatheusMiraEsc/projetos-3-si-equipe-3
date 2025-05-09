@@ -89,5 +89,28 @@ public class IngressoDAO {
             stmt.executeUpdate();
         }
     }
+
+    public List<Ingresso> findByClienteId(int idCliente) throws SQLException {
+        String sql = "SELECT * FROM ingresso WHERE id_cliente = ?";
+        List<Ingresso> list = new ArrayList<>();
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idCliente);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    Ingresso i = new Ingresso();
+                    i.setId_ingresso(rs.getInt("id_ingresso"));
+                    i.setId_assento(rs.getInt("id_assento"));
+                    i.setTipo_ingresso(rs.getString("tipo_ingresso"));
+                    i.setPreco_ingresso(rs.getDouble("preco_ingresso"));
+                    i.setStatus(rs.getBoolean("status"));
+                    i.setId_cliente(rs.getInt("id_cliente"));
+                    i.setId_peca(rs.getInt("id_peca"));
+                    list.add(i);
+                }
+            }
+        }
+        return list;
+    }
 }
 
