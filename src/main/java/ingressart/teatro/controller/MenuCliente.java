@@ -1,12 +1,17 @@
 // src/main/java/grupo3/java_backend/controller/MenuCliente.java
 package ingressart.teatro.controller;
 
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Scanner;
+
 import ingressart.teatro.dao.EventoDAO;
 import ingressart.teatro.dao.IngressoDAO;
 import ingressart.teatro.dao.PecaDAO;
+import ingressart.teatro.dao.PessoaDAO;
+import ingressart.teatro.dao.ReviewDAO;
 import ingressart.teatro.dao.SessaoDAO;
 import ingressart.teatro.dao.VendaDAO;
-import ingressart.teatro.dao.ReviewDAO;
 import ingressart.teatro.model.Ingresso;
 import ingressart.teatro.model.Peca;
 import ingressart.teatro.model.Pessoa;
@@ -21,6 +26,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
+
 public class MenuCliente {
     private Scanner scanner = new Scanner(System.in);
     private EventoDAO eventoDAO = new EventoDAO();
@@ -29,7 +35,7 @@ public class MenuCliente {
     private VendaDAO vendaDAO = new VendaDAO();
     private PecaDAO pecaDAO = new PecaDAO();
     private ReviewDAO reviewDAO = new ReviewDAO();
-
+    private PessoaDAO pessoaDAO = new PessoaDAO(); 
     public void iniciar(Pessoa cliente) {
         while (true) {
             System.out.println("--- Menu Cliente ---");
@@ -136,7 +142,6 @@ public class MenuCliente {
 }
 }
 
-
     private void listarMeusEventos(Pessoa cliente) {
         System.out.println("Funcionalidade 'Meus Eventos' ainda não implementada.\n");
     }
@@ -219,23 +224,45 @@ public class MenuCliente {
     private void visualizarAvaliacoes() {
         try {
             System.out.println("\n--- Avaliações das Peças ---");
+            
             List<Peca> pecas = pecaDAO.findAll();
             
+
+            if (pecas.isEmpty()){
+                System.out.println("Nenhuma peça encontrada.");
+            }
             for (Peca peca : pecas) {
+        
                 List<Review> reviews = reviewDAO.findByPecaId(peca.getId_peca());
-                if (!reviews.isEmpty()) {
+                if(reviews.isEmpty()){
                     System.out.printf("\nPeça: %s\n", peca.getNome());
+                    System.out.println("Nenhuma avaliação encontrada.");
+                    continue;
+                }
+                if (!reviews.isEmpty()) {
+                
                     double mediaRating = reviews.stream()
                         .mapToInt(Review::getRating)
                         .average()
-                        .orElse(0.0);
-                    System.out.printf("Média de avaliações: %.1f estrelas\n", mediaRating);
-                    System.out.println("Avaliações:");
+                        .orElse(0.0);  
+
+                    long quantidadeAvaliacoes = reviews.size();  
                     
+                    System.out.printf("\nPeça: %s\n", peca.getNome());
+                    System.out.printf("Média de avaliações: %.1f estrelas (%d avaliações)\n", mediaRating, quantidadeAvaliacoes);
+                    System.out.println("Avaliações:");
+
+            
                     for (Review review : reviews) {
-                        System.out.printf("- %d estrelas: %s\n", 
+                        // Recupera o cliente que fez a avaliação
+                        Pessoa clienteAvaliado = pessoaDAO.findById(review.getId_cliente());
+                        String nomeCliente = clienteAvaliado != null ? clienteAvaliado.getNome() : "Desconhecido";
+
+                  
+                        System.out.printf("- %d estrelas: %s (Comentário: %s)\n", 
                             review.getRating(), 
-                            review.getComentario() != null ? review.getComentario() : "(sem comentário)");
+                            nomeCliente, 
+                            review.getComentario() != null ? review.getComentario() : "(Sem comentário)");
                     }
                 }
             }
