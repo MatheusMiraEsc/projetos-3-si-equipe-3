@@ -1,5 +1,6 @@
 package ingressart.teatro.controller;
 
+import ingressart.teatro.util.ValidadorDePeca;
 import ingressart.teatro.dao.*;
 import ingressart.teatro.model.Evento;
 import ingressart.teatro.model.Sessao;
@@ -76,11 +77,13 @@ public class MenuTeatro {
                 System.out.println("Nenhuma sala cadastrada. Cadastre uma sala primeiro.\n");
                 return;
             }
+    
             System.out.println("\nSalas disponíveis:");
             for (Sala s : salas) {
                 System.out.printf("  %d - %s (Capacidade: %d)%n",
                     s.getId_sala(), s.getTipo(), s.getCapacidade());
             }
+    
             System.out.print("\nID da sala para esta peça: ");
             int idSala = Integer.parseInt(scanner.nextLine());
             Sala sala = salaDAO.findById(idSala);
@@ -107,15 +110,22 @@ public class MenuTeatro {
             peca.setData(data);
             peca.setHora(horaPeca);
             peca.setValor_ingresso(valorIngresso);
-            pecaDAO.insert(peca);
     
+            // validação antes do insert no banco de dados
+            String erro = ValidadorDePeca.validar(peca);
+            if (erro != null) {
+                System.out.println("Erro ao cadastrar peça: " + erro);
+                return;
+            }
+    
+            pecaDAO.insert(peca);
             System.out.println("\nPeça cadastrada com sucesso!");
             System.out.printf("Peça ID: %d\n", peca.getId_peca());
     
         } catch (Exception ex) {
             System.err.println("Erro ao cadastrar peça: " + ex.getMessage());
         }
-    }
+    }    
 
     private void listarPecas() {
         try {
@@ -189,6 +199,13 @@ public class MenuTeatro {
                     System.out.println("Opção inválida.");
                     return;
             }
+
+            String erro = ValidadorDePeca.validar(peca);
+                if (erro != null) {
+                    System.out.println("Erro ao atualizar peça: " + erro);
+                    return;
+            }
+
             pecaDAO.update(peca);
             System.out.println("\nPeça atualizada com sucesso!");
         } catch (Exception ex) {
