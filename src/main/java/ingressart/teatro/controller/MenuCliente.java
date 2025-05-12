@@ -126,9 +126,33 @@ public class MenuCliente {
 }
 
 
-    private void listarMeusEventos(Pessoa cliente) {
-        System.out.println("Funcionalidade 'Meus Eventos' ainda não implementada.\n");
+private void listarMeusEventos(Pessoa cliente) {
+    try {
+        List<Ingresso> ingressos = ingressoDAO.findByClienteId(cliente.getId_pessoa());
+
+        if (ingressos.isEmpty()) {
+            System.out.println("Você ainda não comprou ingressos.\n");
+            return;
+        }
+
+        System.out.println("--- Meus Ingressos ---");
+        for (Ingresso ingresso : ingressos) {
+            Peca peca = pecaDAO.findById(ingresso.getId_peca());
+            System.out.printf("Peça: %s (%s %s)\n", 
+                peca.getNome(), 
+                peca.getData(), 
+                peca.getHora());
+            System.out.printf("Tipo: %s | Preço: R$%.2f | Status: %s\n\n", 
+                ingresso.getTipo_ingresso(), 
+                ingresso.getPreco_ingresso(), 
+                ingresso.isStatus() ? "Ativo" : "Inativo");
+        }
+
+    } catch (SQLException ex) {
+        System.err.println("Erro ao listar seus eventos: " + ex.getMessage());
     }
+}
+
 
     private void realizarCompra(Pessoa cliente, Peca peca) {
         try {
