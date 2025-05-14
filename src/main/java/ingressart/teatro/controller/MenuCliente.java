@@ -16,8 +16,8 @@ import ingressart.teatro.model.Ingresso;
 import ingressart.teatro.model.Peca;
 import ingressart.teatro.model.Pessoa;
 import ingressart.teatro.model.Review;
+import ingressart.teatro.model.Sessao;
 // import ingressart.teatro.model.Evento;
-// import ingressart.teatro.model.Sessao;
 // import ingressart.teatro.model.Venda;
 
 
@@ -172,6 +172,26 @@ private void listarMeusEventos(Pessoa cliente) {
 
     private void realizarCompra(Pessoa cliente, Peca peca) {
         try {
+            Sessao sessao = sessaoDAO.findByEventoId(peca.getId_peca());
+            if (sessao == null){
+                System.out.println("Sessão não encontrada");
+                return;
+            }
+            int quantidade = 1;
+            if (!sessaoDAO.verificarDisponibilidade(sessao.getId_sessao(), quantidade)){
+                System.out.println("Essa peça está com lotação máxima.");
+                return;
+            }
+            System.out.printf("Ingressos disponíveis: %d%n", sessao.getNum_ingressos_disp());
+            System.out.print("Quantos ingressos deseja comprar? ");
+            quantidade = Integer.parseInt(scanner.nextLine());
+
+            if (!sessaoDAO.verificarDisponibilidade(sessao.getId_sessao(), quantidade) || quantidade<=0){
+                System.out.println("Quantidade indisponível.");
+                return;
+            }
+
+            for(int i=0;i<quantidade;i++){
             Ingresso ingresso = new Ingresso();
             ingresso.setId_cliente(cliente.getId_pessoa());
             ingresso.setId_peca(peca.getId_peca());
@@ -180,9 +200,13 @@ private void listarMeusEventos(Pessoa cliente) {
             ingresso.setStatus(true);
             
             ingressoDAO.insert(ingresso);
-            System.out.println("Ingresso comprado com sucesso!");
+            }
+            sessaoDAO.reduzirIngressosDisponiveis(sessao.getId_sessao(), quantidade);
+            System.out.println("Ingresso(s) comprado(s) com sucesso!");
         } catch (SQLException ex) {
             System.err.println("Erro ao comprar ingresso: " + ex.getMessage());
+        } catch(NumberFormatException e){
+            System.err.println("Número inválido.");
         }
     }
 

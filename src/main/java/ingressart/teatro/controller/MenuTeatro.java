@@ -306,8 +306,8 @@ public class MenuTeatro {
             System.out.println("\n--- Cadastro de Nova Sessão ---");
             System.out.print("Digite o ID da peça (evento) para criar a sessão: ");
             int idEvento = Integer.parseInt(scanner.nextLine());
-            Evento evento = eventoDAO.findById(idEvento);
-            if (evento == null) {
+            Peca peca = pecaDAO.findById(idEvento);
+            if (peca == null) {
                 System.out.println("Evento não encontrado!");
                 return;
             }
