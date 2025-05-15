@@ -3,10 +3,11 @@ package ingressart.teatro.controller;
 import ingressart.teatro.util.ValidadorDePeca;
 import ingressart.teatro.dao.*;
 import ingressart.teatro.model.Evento;
+import ingressart.teatro.model.Pessoa;
 import ingressart.teatro.model.Sessao;
 import ingressart.teatro.model.Sala;
 import ingressart.teatro.model.Peca;
-
+import java.util.Map;
 import java.sql.SQLException;
 //import java.time.LocalDateTime;
 import java.util.List;
@@ -18,6 +19,8 @@ public class MenuTeatro {
     private final SalaDAO salaDAO = new SalaDAO();
     private final SessaoDAO sessaoDAO = new SessaoDAO();
     private final PecaDAO pecaDAO = new PecaDAO();
+    private final IngressoDAO ingressoDAO = new IngressoDAO();
+    private final PessoaDAO pessoaDAO = new PessoaDAO();
 
     public void iniciar() {
         while (true) {
@@ -26,6 +29,9 @@ public class MenuTeatro {
             System.out.println("2 - Cadastrar Sala");
             System.out.println("3 - Cadastrar Sessão");
             System.out.println("4 - Listar Salas");
+            System.out.println("5 - Ver compradores por peça");
+            System.out.println("6 - Ver usuários cadastrados");
+
             System.out.println("0 - Sair");
             System.out.print("Opção: ");
             String opc = scanner.nextLine();
@@ -35,6 +41,8 @@ public class MenuTeatro {
                 case "2": cadastrarSala(); break;
                 case "3": cadastrarSessao(); break;
                 case "4": listarSalas(); break;
+                case "5": listarCompradoresPorPeca(); break;
+                //case "6": listarUsuarios(); break;
                 case "0": return;
                 default: System.out.println("Opção inválida.\n");
             }
@@ -357,4 +365,30 @@ public class MenuTeatro {
             System.err.println("Erro ao cadastrar sessão: " + e.getMessage());
         }
     }
-}
+
+    private void listarCompradoresPorPeca(){
+        try{
+            System.out.print("\nDigite o ID da peça: ");
+            int idPeca = Integer.parseInt(scanner.nextLine());
+            Peca peca = pecaDAO.findById(idPeca);
+            if (peca == null) {
+                System.out.println(("Peça não encontrada."));
+                return;
+            }
+            Map<Integer,Integer> ingressosPorCliente = ingressoDAO.contarIngressosPorCliente(idPeca);
+            if (ingressosPorCliente.isEmpty()){
+                System.out.println("Nenhum ingresso foi comprado para essa peça");
+            }
+            System.out.println("\n--- Compradores da peça: " + peca.getNome() + " ---");
+            for(Map.Entry<Integer, Integer> entry : ingressosPorCliente.entrySet()){
+                Pessoa cliente = pessoaDAO.findById(entry.getKey());
+                if(cliente != null){
+                    System.out.printf("Cliente: %s | Email: %s | CPF: %s | Ingressos: %d\n", cliente.getNome(), cliente.getEmail(), cliente.getCpf(), entry.getValue());
+                }
+            }}
+            catch(Exception e){
+                System.err.println("Erro ao listar compradores: " + e.getMessage());
+            }
+        }
+    }
+

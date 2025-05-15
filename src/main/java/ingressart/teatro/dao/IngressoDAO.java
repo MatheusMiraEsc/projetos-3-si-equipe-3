@@ -1,5 +1,6 @@
 package ingressart.teatro.dao;
-
+import java.util.Map;
+import java.util.HashMap;
 import ingressart.teatro.model.Ingresso;
 import java.sql.*;
 import java.util.ArrayList;
@@ -94,6 +95,19 @@ public class IngressoDAO {
             stmt.setInt(1, id);
             stmt.executeUpdate();
         }
+    }
+    public Map<Integer, Integer> contarIngressosPorCliente(int idPeca) throws SQLException{
+        String sql = "SELECT id_cliente, COUNT(*) AS total FROM ingresso WHERE id_peca = ? GROUP BY id_cliente";
+        Map<Integer, Integer> mapa = new HashMap<>();
+        try(Connection conn = ConnectionFactory.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)){
+                stmt.setInt(1, idPeca);
+                ResultSet rs = stmt .executeQuery();
+                while(rs.next()){
+                    mapa.put(rs.getInt("id_cliente"), rs.getInt("total"));
+                }
+            }
+            return mapa;
     }
 }
 //     public List<Ingresso> findByClienteId(int idCliente) throws SQLException {
