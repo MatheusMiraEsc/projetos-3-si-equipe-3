@@ -31,6 +31,8 @@ public class ReviewDAO {
         }
     }
 
+
+
     public List<Review> findByPecaId(int idPeca) throws SQLException {
         String sql = "SELECT * FROM review WHERE id_peca = ? ORDER BY data_review DESC";
         List<Review> reviews = new ArrayList<>();
@@ -74,5 +76,12 @@ public class ReviewDAO {
         }
         return reviews;
     }
-
+    public void delete(int idReview) throws SQLException {
+        String sql = "DELETE FROM review WHERE id_review = ?";
+        try (Connection conn = ConnectionFactory.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, idReview);
+            stmt.executeUpdate();
+        }
+    }
 }

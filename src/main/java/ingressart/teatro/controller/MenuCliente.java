@@ -80,23 +80,31 @@ public class MenuCliente {
         try {
             List<Peca> pecas = pecaDAO.findAll();
             for (Peca p : pecas) {
-                System.out.printf("%d - %s (%s %s)%n", 
-                    p.getId_peca(), 
-                    p.getNome(), 
-                    p.getData(), 
-                    p.getHora());
-            }
-            System.out.print("Escolha a peça (ID) ou 0 para voltar: ");
-            int id = Integer.parseInt(scanner.nextLine());
-            if (id == 0) return;
-
-            Peca peca = pecaDAO.findById(id);
-            System.out.println("Descrição: " + peca.getDescricao());
-            System.out.println("Valor: R$" + peca.getValor_ingresso());
-            System.out.println("1 - Comprar ingresso");
-            System.out.println("0 - Voltar");
-            if ("1".equals(scanner.nextLine())) {
-                realizarCompra(cliente, peca);
+                Sessao sessao = sessaoDAO.findByEventoId(p.getId_peca());
+                    System.out.printf("%d - %s (%s %s)%n", 
+                        p.getId_peca(), 
+                        p.getNome(), 
+                        p.getData(), 
+                        p.getHora());
+                if (sessao != null) System.out.println("Status - Ativo");
+                else System.out.println("Status - Desativo");
+                System.out.print("Escolha a peça (ID) ou 0 para voltar: ");
+                int id = Integer.parseInt(scanner.nextLine());
+                if (id == 0) return;
+                sessao = sessaoDAO.findByEventoId(id);
+                if (sessao == null) {
+                    System.out.println("Peça indisponível no momento.");
+                    return;
+                }
+                Peca peca = pecaDAO.findById(id);
+                
+                System.out.println("Descrição: " + peca.getDescricao());
+                System.out.println("Valor: R$" + peca.getValor_ingresso());
+                System.out.println("1 - Comprar ingresso");
+                System.out.println("0 - Voltar");
+                if ("1".equals(scanner.nextLine())) {
+                    realizarCompra(cliente, peca);
+                }
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -128,6 +136,11 @@ public class MenuCliente {
         peca.getNome(), 
         peca.getData(), 
         peca.getHora());
+    Sessao sessao = sessaoDAO.findByEventoId(peca.getId_peca());
+    if(sessao!= null) System.out.println("Status - Ativada"); 
+    if (sessao == null) {
+        System.out.println("Status - Desativada");
+    }
     System.out.println("Descrição: " + peca.getDescricao());
     System.out.println("Valor: R$" + peca.getValor_ingresso());
     System.out.println("1 - Comprar ingresso");
@@ -174,7 +187,7 @@ private void listarMeusEventos(Pessoa cliente) {
         try {
             Sessao sessao = sessaoDAO.findByEventoId(peca.getId_peca());
             if (sessao == null){
-                System.out.println("Sessão não encontrada");
+                System.out.println("Peça indisponível");
                 return;
             }
             int quantidade = 1;
