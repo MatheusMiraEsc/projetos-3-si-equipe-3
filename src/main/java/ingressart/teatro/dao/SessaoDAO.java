@@ -144,4 +144,21 @@ public class SessaoDAO {
         }
         return list;
     }
+
+
+    public boolean verificarDisponibilidade(int idSessao, int quantidadeSolicitada) throws SQLException {
+    Sessao sessao = findById(idSessao);
+    if (sessao == null) return false;
+
+    return sessao.getNum_ingressos_disp() >= quantidadeSolicitada;
+    }
+
+    public void reduzirIngressosDisponiveis(int idSessao, int quantidade) throws SQLException {
+    Sessao sessao = findById(idSessao);
+    if (sessao != null) {
+        int novoTotal = sessao.getNum_ingressos_disp() - quantidade;
+        sessao.setNum_ingressos_disp(novoTotal);
+        update(sessao);
+        }
+    }
 }

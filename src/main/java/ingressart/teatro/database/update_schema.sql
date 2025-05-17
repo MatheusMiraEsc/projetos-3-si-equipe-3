@@ -64,4 +64,15 @@ CREATE TABLE venda (
     forma_pagamento VARCHAR(50),
     id_cliente INTEGER,
     FOREIGN KEY (id_cliente) REFERENCES pessoa(id_pessoa)
+);
+
+CREATE TABLE review (
+    id_review SERIAL PRIMARY KEY,
+    id_cliente INTEGER NOT NULL,
+    id_peca INTEGER NOT NULL,
+    rating INTEGER NOT NULL CHECK (rating >= 1 AND rating <= 5),
+    comentario TEXT,
+    data_review TIMESTAMP NOT NULL,
+    FOREIGN KEY (id_cliente) REFERENCES pessoa(id_pessoa),
+    FOREIGN KEY (id_peca) REFERENCES peca(id_peca)
 ); 

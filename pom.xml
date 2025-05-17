@@ -4,7 +4,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Informações do Projeto -->
     <groupId>ingressart</groupId>
     <artifactId>ingressart-teatro</artifactId>
     <version>1.0.0</version>
@@ -14,15 +13,28 @@
     <description>Sistema de gerenciamento para teatros</description>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <java.version>1.8</java.version>
+        <spring-boot.version>3.1.0</spring-boot.version>
         <postgresql.version>42.6.0</postgresql.version>
         <hikaricp.version>5.0.1</hikaricp.version>
         <junit.version>5.9.2</junit.version>
     </properties>
 
     <dependencies>
+        <!-- Spring Boot Starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+
+        <!-- Spring Boot Starter JDBC -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+
         <!-- PostgreSQL -->
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -30,7 +42,7 @@
             <version>${postgresql.version}</version>
         </dependency>
 
-        <!-- Pool de Conexões -->
+        <!-- HikariCP -->
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP</artifactId>
@@ -72,14 +84,25 @@
 
     <build>
         <plugins>
-            <!-- Compilador Java -->
+            <!-- Compilador -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
             </plugin>
 
-            <!-- Criar JAR executável -->
+            <!-- Spring Boot plugin (para spring-boot:run) -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+            </plugin>
+
+            <!-- JAR executável -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -101,38 +124,12 @@
                 </executions>
             </plugin>
 
-            <!-- Executar testes -->
+            <!-- Testes -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M7</version>
             </plugin>
-
-            <!-- Formatação de código -->
-            <plugin>
-                <groupId>net.revelc.code</groupId>
-                <artifactId>formatter-maven-plugin</artifactId>
-                <version>2.20.0</version>
-                <configuration>
-                    <configFile>${basedir}/formatter.xml</configFile>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
-
-    <!-- Configuração de Relatórios -->
-    <reporting>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.4.1</version>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>3.0.0-M7</version>
-            </plugin>
-        </plugins>
-    </reporting>
 </project>

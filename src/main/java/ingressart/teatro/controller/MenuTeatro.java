@@ -1,11 +1,15 @@
 package ingressart.teatro.controller;
 
+import ingressart.teatro.util.ValidadorDePeca;
 import ingressart.teatro.dao.*;
 import ingressart.teatro.model.Evento;
+import ingressart.teatro.model.Ingresso;
+import ingressart.teatro.model.Pessoa;
 import ingressart.teatro.model.Sessao;
 import ingressart.teatro.model.Sala;
 import ingressart.teatro.model.Peca;
-
+import ingressart.teatro.model.Review;
+import java.util.Map;
 import java.sql.SQLException;
 //import java.time.LocalDateTime;
 import java.util.List;
@@ -17,6 +21,9 @@ public class MenuTeatro {
     private final SalaDAO salaDAO = new SalaDAO();
     private final SessaoDAO sessaoDAO = new SessaoDAO();
     private final PecaDAO pecaDAO = new PecaDAO();
+    private final IngressoDAO ingressoDAO = new IngressoDAO();
+    private final PessoaDAO pessoaDAO = new PessoaDAO();
+    private final ReviewDAO reviewDAO = new ReviewDAO();
 
     public void iniciar() {
         while (true) {
@@ -25,6 +32,9 @@ public class MenuTeatro {
             System.out.println("2 - Cadastrar Sala");
             System.out.println("3 - Cadastrar Sessão");
             System.out.println("4 - Listar Salas");
+            System.out.println("5 - Ver compradores por peça");
+            System.out.println("6 - Ver usuários cadastrados");
+
             System.out.println("0 - Sair");
             System.out.print("Opção: ");
             String opc = scanner.nextLine();
@@ -34,6 +44,8 @@ public class MenuTeatro {
                 case "2": cadastrarSala(); break;
                 case "3": cadastrarSessao(); break;
                 case "4": listarSalas(); break;
+                case "5": listarCompradoresPorPeca(); break;
+                //case "6": listarUsuarios(); break;
                 case "0": return;
                 default: System.out.println("Opção inválida.\n");
             }
@@ -46,7 +58,9 @@ public class MenuTeatro {
             System.out.println("1 - Cadastrar Peça");
             System.out.println("2 - Listar Peças");
             System.out.println("3 - Alterar Peça");
-            System.out.println("4 - Deletar Peça");
+            System.out.println("4 - Desativar Peça");
+            System.out.println("5 - Reativar Peça");
+            System.out.println("6 - Deletar Peça");
             System.out.println("0 - Sair");
             System.out.print("Opção: ");
             String opc = scanner.nextLine();
@@ -55,7 +69,9 @@ public class MenuTeatro {
                 case "1": cadastrarPeca(); break;
                 case "2": listarPecas(); break;
                 case "3": alterarPeca(); break;
-                case "4": deletarPeca(); break;
+                case "4": desativarPeca(); break;
+                case "5": reativarPeca(); break;
+                case "6": deletarPeca(); break;
                 case "0": return;
                 default: System.out.println("Opção inválida.\n");
             }
@@ -76,11 +92,13 @@ public class MenuTeatro {
                 System.out.println("Nenhuma sala cadastrada. Cadastre uma sala primeiro.\n");
                 return;
             }
+    
             System.out.println("\nSalas disponíveis:");
             for (Sala s : salas) {
                 System.out.printf("  %d - %s (Capacidade: %d)%n",
                     s.getId_sala(), s.getTipo(), s.getCapacidade());
             }
+    
             System.out.print("\nID da sala para esta peça: ");
             int idSala = Integer.parseInt(scanner.nextLine());
             Sala sala = salaDAO.findById(idSala);
@@ -107,19 +125,27 @@ public class MenuTeatro {
             peca.setData(data);
             peca.setHora(horaPeca);
             peca.setValor_ingresso(valorIngresso);
-            pecaDAO.insert(peca);
     
+            // validação antes do insert no banco de dados
+            String erro = ValidadorDePeca.validar(peca);
+            if (erro != null) {
+                System.out.println("Erro ao cadastrar peça: " + erro);
+                return;
+            }
+    
+            pecaDAO.insert(peca);
             System.out.println("\nPeça cadastrada com sucesso!");
             System.out.printf("Peça ID: %d\n", peca.getId_peca());
     
         } catch (Exception ex) {
             System.err.println("Erro ao cadastrar peça: " + ex.getMessage());
         }
-    }
+    }    
 
     private void listarPecas() {
         try {
             List<Peca> pecas = pecaDAO.findAll();
+            List<Sessao> sessoes = sessaoDAO.findAll();
             if (pecas.isEmpty()) {
                 System.out.println("\nNenhuma peça cadastrada.");
                 return;
@@ -130,7 +156,14 @@ public class MenuTeatro {
                 System.out.printf("ID: %d | Nome: %s | Descrição: %s | Data: %s | Hora: %s | Valor: R$%.2f\n",
                     peca.getId_peca(), peca.getNome(), peca.getDescricao(),
                     peca.getData(), peca.getHora(), peca.getValor_ingresso());
+                for (Sessao sessao : sessoes){
+                    if (sessao.getId_peca()== peca.getId_peca()){
+                        System.out.println("Status - Ativo");
+                    }
+                }
+                System.out.println("Status - Desativado");
             }
+        
         } catch (SQLException ex) {
             System.err.println("Erro ao listar peças: " + ex.getMessage());
         }
@@ -189,10 +222,130 @@ public class MenuTeatro {
                     System.out.println("Opção inválida.");
                     return;
             }
+
+            String erro = ValidadorDePeca.validar(peca);
+                if (erro != null) {
+                    System.out.println("Erro ao atualizar peça: " + erro);
+                    return;
+            }
+
             pecaDAO.update(peca);
             System.out.println("\nPeça atualizada com sucesso!");
         } catch (Exception ex) {
             System.err.println("Erro ao alterar peça: " + ex.getMessage());
+        }
+    }
+
+    private void desativarPeca(){
+        try {
+            System.out.print("\nDigite o ID da peça que deseja desativar: ");
+            int id = Integer.parseInt(scanner.nextLine());
+            Peca peca = pecaDAO.findById(id);
+
+            if (peca == null) {
+                System.out.println("Peça não encontrada.");
+                return;
+            }
+
+            String info = String.format(
+                "\nID: %d | Nome: %s | Descrição: %s | Data: %s | Hora: %s | Valor: R$%.2f\n",
+                peca.getId_peca(),
+                peca.getNome(),
+                peca.getDescricao(),
+                peca.getData(),
+                peca.getHora(),
+                peca.getValor_ingresso()
+            );
+
+            System.out.println("Deseja realmente desativar a peça abaixo?");
+            System.out.println(info);
+            System.out.print("Digite 'S' para confirmar: ");
+            String confirmacao = scanner.nextLine();
+
+            if (confirmacao.equalsIgnoreCase("S")) {
+                List<Sessao> sessoes = sessaoDAO.findAll();
+                List<Ingresso> ingressos = ingressoDAO.findAll();
+                for (Ingresso ingresso : ingressos){
+                    id = ingresso.getId_peca();
+                    if(id == peca.getId_peca()){
+                        ingresso.setStatus(false);
+                        ingressoDAO.update(ingresso);
+                    }
+                }
+                for(Sessao sessao : sessoes){
+                    id = sessao.getId_peca();
+                    if(id == peca.getId_peca()){
+                        sessaoDAO.delete(sessao.getId_sessao());
+                        sessaoDAO.update(sessao);
+                    }
+
+                }
+                System.out.println("\nPeça desativada com sucesso!");
+            } else {
+                System.out.println("Desativação cancelada.");
+            }
+        } catch (Exception ex) {
+            System.err.println("Erro ao deletar peça: " + ex.getMessage());
+        }
+    }
+
+    private void reativarPeca() {
+        try {
+            System.out.println("\n--- Reativação de Peça ---");
+            System.out.print("Digite o ID da peça (evento) para reativa-la: ");
+            int idEvento = Integer.parseInt(scanner.nextLine());
+            Peca peca = pecaDAO.findById(idEvento);
+            if (peca == null) {
+                System.out.println("Evento não encontrado!");
+                return;
+            }
+
+            System.out.println("\n--- Digite a sala em que deseja colocar o evento ---");
+            System.out.println("\nSalas disponíveis:");
+            List<Sala> salas = salaDAO.findAll();
+            for (Sala s : salas) {
+                System.out.printf("  %d - %s (Capacidade: %d)%n",
+                    s.getId_sala(), s.getTipo(), s.getCapacidade());
+            }
+            System.out.print("\nDigite o ID da sala escolhida: ");
+            int idSala = Integer.parseInt(scanner.nextLine());
+            Sala sala = salaDAO.findById(idSala);
+            if (sala == null) {
+                System.out.println("Sala não encontrada!");
+                return;
+            }
+
+            System.out.println("\nAgora, informe a data e hora da sessão:");
+            System.out.print("Dia: ");
+            int dia = Integer.parseInt(scanner.nextLine());
+            System.out.print("Mês: ");
+            int mes = Integer.parseInt(scanner.nextLine());
+            System.out.print("Ano: ");
+            int ano = Integer.parseInt(scanner.nextLine());
+            System.out.print("Hora (0-23): ");
+            int hora = Integer.parseInt(scanner.nextLine());
+            System.out.print("Minuto (0-59): ");
+            int minuto = Integer.parseInt(scanner.nextLine());
+            java.time.LocalDateTime inicio = java.time.LocalDateTime.of(ano, mes, dia, hora, minuto);
+
+            System.out.print("\nPreço do ingresso: ");
+            float preco = Float.parseFloat(scanner.nextLine());
+
+            int disponiveis = sala.getCapacidade();
+
+            Sessao sessao = new Sessao();
+            sessao.setId_peca(idEvento);
+            sessao.setId_sala(idSala);
+            sessao.setData_inicio(inicio);
+            sessao.setPreco_sessao(preco);
+            sessao.setNum_ingressos_disp(disponiveis);
+            sessaoDAO.insert(sessao);
+
+            System.out.println("\nEvento reativado com sucesso!"
+            
+            );
+        } catch (Exception e) {
+            System.err.println("Erro ao cadastrar sessão: " + e.getMessage());
         }
     }
 
@@ -201,7 +354,7 @@ public class MenuTeatro {
             System.out.print("\nDigite o ID da peça que deseja remover: ");
             int id = Integer.parseInt(scanner.nextLine());
             Peca peca = pecaDAO.findById(id);
-
+            
             if (peca == null) {
                 System.out.println("Peça não encontrada.");
                 return;
@@ -221,7 +374,17 @@ public class MenuTeatro {
             System.out.println(info);
             System.out.print("Digite 'S' para confirmar: ");
             String confirmacao = scanner.nextLine();
-
+            List<Ingresso> ingressos = ingressoDAO.findAll();
+            List<Review> reviews = reviewDAO.findByPecaId(peca.getId_peca());
+            for(Review review : reviews){
+                if (review.getId_peca() == peca.getId_peca()){
+                    reviewDAO.delete(review.getId_review());
+                }
+            }
+            for (Ingresso ingresso : ingressos){
+                if (ingresso.getId_peca() == peca.getId_peca()) ingressoDAO.delete(ingresso.getId_ingresso());
+            }
+            
             if (confirmacao.equalsIgnoreCase("S")) {
                 pecaDAO.delete(id);
                 System.out.println("\nPeça removida com sucesso!");
@@ -289,8 +452,8 @@ public class MenuTeatro {
             System.out.println("\n--- Cadastro de Nova Sessão ---");
             System.out.print("Digite o ID da peça (evento) para criar a sessão: ");
             int idEvento = Integer.parseInt(scanner.nextLine());
-            Evento evento = eventoDAO.findById(idEvento);
-            if (evento == null) {
+            Peca peca = pecaDAO.findById(idEvento);
+            if (peca == null) {
                 System.out.println("Evento não encontrado!");
                 return;
             }
@@ -340,4 +503,30 @@ public class MenuTeatro {
             System.err.println("Erro ao cadastrar sessão: " + e.getMessage());
         }
     }
-}
+
+    private void listarCompradoresPorPeca(){
+        try{
+            System.out.print("\nDigite o ID da peça: ");
+            int idPeca = Integer.parseInt(scanner.nextLine());
+            Peca peca = pecaDAO.findById(idPeca);
+            if (peca == null) {
+                System.out.println(("Peça não encontrada."));
+                return;
+            }
+            Map<Integer,Integer> ingressosPorCliente = ingressoDAO.contarIngressosPorCliente(idPeca);
+            if (ingressosPorCliente.isEmpty()){
+                System.out.println("Nenhum ingresso foi comprado para essa peça");
+            }
+            System.out.println("\n--- Compradores da peça: " + peca.getNome() + " ---");
+            for(Map.Entry<Integer, Integer> entry : ingressosPorCliente.entrySet()){
+                Pessoa cliente = pessoaDAO.findById(entry.getKey());
+                if(cliente != null){
+                    System.out.printf("Cliente: %s | Email: %s | CPF: %s | Ingressos: %d\n", cliente.getNome(), cliente.getEmail(), cliente.getCpf(), entry.getValue());
+                }
+            }}
+            catch(Exception e){
+                System.err.println("Erro ao listar compradores: " + e.getMessage());
+            }
+        }
+    }
+
