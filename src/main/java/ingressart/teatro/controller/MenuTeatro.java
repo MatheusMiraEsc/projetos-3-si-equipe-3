@@ -171,6 +171,7 @@ public class MenuTeatro {
 
     private void alterarPeca() {
         try {
+            listarPecas();
             System.out.print("\nDigite o ID da peça que deseja alterar: ");
             int id = Integer.parseInt(scanner.nextLine());
             Peca peca = pecaDAO.findById(id);
@@ -238,6 +239,7 @@ public class MenuTeatro {
 
     private void desativarPeca(){
         try {
+            listarPecas();
             System.out.print("\nDigite o ID da peça que deseja desativar: ");
             int id = Integer.parseInt(scanner.nextLine());
             Peca peca = pecaDAO.findById(id);
@@ -291,6 +293,7 @@ public class MenuTeatro {
 
     private void reativarPeca() {
         try {
+            listarPecas();
             System.out.println("\n--- Reativação de Peça ---");
             System.out.print("Digite o ID da peça (evento) para reativa-la: ");
             int idEvento = Integer.parseInt(scanner.nextLine());
@@ -351,6 +354,7 @@ public class MenuTeatro {
 
     private void deletarPeca() {
         try {
+            listarPecas();
             System.out.print("\nDigite o ID da peça que deseja remover: ");
             int id = Integer.parseInt(scanner.nextLine());
             Peca peca = pecaDAO.findById(id);
@@ -450,6 +454,7 @@ public class MenuTeatro {
     private void cadastrarSessao() {
         try {
             System.out.println("\n--- Cadastro de Nova Sessão ---");
+            listarPecas();
             System.out.print("Digite o ID da peça (evento) para criar a sessão: ");
             int idEvento = Integer.parseInt(scanner.nextLine());
             Peca peca = pecaDAO.findById(idEvento);
@@ -506,6 +511,7 @@ public class MenuTeatro {
 
     private void listarCompradoresPorPeca(){
         try{
+            listarPecas();
             System.out.print("\nDigite o ID da peça: ");
             int idPeca = Integer.parseInt(scanner.nextLine());
             Peca peca = pecaDAO.findById(idPeca);

@@ -111,9 +111,28 @@ public class MenuCliente {
             System.err.println("Erro ao acessar peças: " + ex.getMessage());
         }
     }
+    private void apenasVisualizarPecas(Pessoa cliente) {
+        try {
+            List<Peca> pecas = pecaDAO.findAll();
+            for (Peca p : pecas) {
+                Sessao sessao = sessaoDAO.findByEventoId(p.getId_peca());
+                    System.out.printf("%d - %s (%s %s)%n", 
+                        p.getId_peca(), 
+                        p.getNome(), 
+                        p.getData(), 
+                        p.getHora());
+                if (sessao != null) System.out.println("Status - Ativo");
+                else System.out.println("Status - Desativo");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            System.err.println("Erro ao acessar peças: " + ex.getMessage());
+        }
+    }
 
     private void buscarPeca(Pessoa cliente){
         try {
+            apenasVisualizarPecas(cliente);
             List<Peca> pecas = pecaDAO.findAll();
             Peca peca = null;
             while(peca ==null) {
