@@ -19,8 +19,7 @@ import ingressart.teatro.model.Review;
 import ingressart.teatro.model.Sessao;
 // import ingressart.teatro.model.Evento;
 // import ingressart.teatro.model.Venda;
-
-
+import ingressart.teatro.util.ValidaEntrada;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -60,7 +59,7 @@ public class MenuCliente {
                     listarMeusEventos(cliente);
                     break;
                 case "4":
-                    System.out.println("Funcionalidade editar perfil...");
+                    editarPerfil(cliente);
                     break;
                 case "5":
                     avaliarPeca(cliente);
@@ -200,6 +199,86 @@ private void listarMeusEventos(Pessoa cliente) {
         System.err.println("Erro ao listar seus eventos: " + ex.getMessage());
     }
 }
+
+    private void editarPerfil(Pessoa cliente){
+        try{
+            while(true){
+                System.out.println("\n--- Editar Perfil ---");
+            System.out.printf("1 - Nome: %s\n", cliente.getNome());
+            System.out.printf("2 - Email: %s\n", cliente.getEmail());
+            System.out.printf("3 - Telefone: %s\n", cliente.getTelefone());
+            System.out.printf("4 - Data de Nascimento: %s\n", cliente.getData_nascimento());
+            System.out.println("5 - Senha: ********");
+            System.out.println("0 - Voltar");
+            System.out.print("Escolha o campo que deseja alterar: ");
+            String opc = scanner.nextLine();
+            int perfilAlterado = 0;
+            switch(opc){
+                case "1":
+                    System.out.print("Novo nome: ");
+                    cliente.setNome(scanner.nextLine());
+                    perfilAlterado++;
+                    break;
+                case "2":
+                    while(true){
+                        System.out.print("Novo email : ");
+                        String email = scanner.nextLine();
+                        if(ValidaEntrada.emailValido(email)){
+                            cliente.setEmail(email);
+                            perfilAlterado++;
+                            break;
+                        }else{
+                            System.out.println("Email inválido. Ex: exemplo@dominio.com");
+                        }
+                    }
+                    break;
+                case "3":
+                    while(true){
+                        System.out.println("Novo telefone (somente números): ");
+                        String telefone = scanner.nextLine();
+                        if(ValidaEntrada.telefoneValido(telefone)){
+                            cliente.setTelefone(telefone);
+                            perfilAlterado++;
+                            break;
+                        }else{
+                            System.out.println("Telefone inválido. Deve conter 10 ou 11 números.");
+                        }
+                    }
+                    break;
+                case "4":
+                    System.out.print("Nova data de nascimento (DDMMYYYY): ");
+                    String dataNascimento = scanner.nextLine();
+                    if(ValidaEntrada.dataNascimentoValida(dataNascimento)){
+                        cliente.setData_nascimento(ValidaEntrada.converterData(dataNascimento));
+                        perfilAlterado++;
+                        break;
+                    }else{
+                        System.out.println("Data inválida. Use o formato DDMMYYYY.");
+                    }
+
+                case "5":
+                    System.out.print("Nova senha: ");
+                    cliente.setSenha(scanner.nextLine());
+                    perfilAlterado++;
+                    break;
+                case "0":
+                if(perfilAlterado>0){
+                    pessoaDAO.update(cliente);
+                    System.out.println("\n Perfil atualizado com sucesso!");
+                }else{
+                    System.out.println("\n Voltando...");
+                    return;
+                }
+                return;
+                default:
+                    System.out.println("Opção inválida.");
+            }
+            }
+        }
+        catch(Exception e){
+            System.err.println("Erro ao editar perfil: " + e.getMessage());
+        }
+    }
 
 
     private void realizarCompra(Pessoa cliente, Peca peca) {

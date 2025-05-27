@@ -83,8 +83,8 @@ public class PessoaDAO {
             stmt.setString(1, p.getNome());
             stmt.setString(2, p.getEmail());
             stmt.setString(3, p.getTelefone());
-            stmt.setString(5, p.getSenha());
-            stmt.setInt(6, p.getId_pessoa());
+            stmt.setString(4, p.getSenha());
+            stmt.setInt(5, p.getId_pessoa());
             stmt.executeUpdate();
         }
     }
