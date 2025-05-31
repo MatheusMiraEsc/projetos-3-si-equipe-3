@@ -131,7 +131,7 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
 
 ---
 
-## ▶️ Passos para executar o projeto
+## ▶️ Passos para executar o projeto VS Code
 
 1. **Clone o repositório:**
 
