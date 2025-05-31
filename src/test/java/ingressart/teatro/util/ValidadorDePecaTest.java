@@ -1,12 +1,12 @@
 package ingressart.teatro.util;
 
+import ingressart.teatro.model.Peca;
+import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-import ingressart.teatro.model.Peca;
 
 public class ValidadorDePecaTest {
     
