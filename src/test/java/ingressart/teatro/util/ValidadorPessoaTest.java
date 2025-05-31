@@ -15,7 +15,7 @@ public class ValidadorPessoaTest {
         Pessoa pessoa = new Pessoa();
         pessoa.setNome("Paulo Egito");
         pessoa.setEmail("pEgito@email.com");
-        pessoa.setCpf("7745678901");
+        pessoa.setCpf("77456789012");
         pessoa.setTelefone("11999999999");
         pessoa.setData_nascimento(LocalDate.of(1990, 5, 20));
         pessoa.setEndereco("Cais do Apolo, 77");
@@ -30,7 +30,7 @@ public class ValidadorPessoaTest {
         Pessoa pessoa = new Pessoa();
         pessoa.setNome(" ");
         pessoa.setEmail("pEgito@email.com");
-        pessoa.setCpf("7745678901");
+        pessoa.setCpf("77456789012");
         pessoa.setTelefone("11999999999");
         pessoa.setData_nascimento(LocalDate.of(1990, 5, 20));
         pessoa.setEndereco("Cais do Apolo, 77");
@@ -45,7 +45,7 @@ public class ValidadorPessoaTest {
         Pessoa pessoa = new Pessoa();
         pessoa.setNome("Paulo Egito");
         pessoa.setEmail("pEgitoemail.com"); // email inválido
-        pessoa.setCpf("7745678901");
+        pessoa.setCpf("77456789012");
         pessoa.setTelefone("11999999999");
         pessoa.setData_nascimento(LocalDate.of(1990, 5, 20));
         pessoa.setEndereco("Cais do Apolo, 77");
@@ -75,7 +75,7 @@ public class ValidadorPessoaTest {
         Pessoa pessoa = new Pessoa();
         pessoa.setNome("Paulo Egito");
         pessoa.setEmail("pEgito@email.com");
-        pessoa.setCpf("7745678901");
+        pessoa.setCpf("77456789012");
         pessoa.setTelefone(" "); // vazio
         pessoa.setData_nascimento(LocalDate.of(1990, 5, 20));
         pessoa.setEndereco("Cais do Apolo, 77");
@@ -90,7 +90,7 @@ public class ValidadorPessoaTest {
         Pessoa pessoa = new Pessoa();
         pessoa.setNome("Paulo Egito");
         pessoa.setEmail("pEgito@email.com");
-        pessoa.setCpf("7745678901");
+        pessoa.setCpf("77456789012");
         pessoa.setTelefone("11999999999");
         pessoa.setData_nascimento(LocalDate.now().plusDays(1)); // data no futuro
         pessoa.setEndereco("Cais do Apolo, 77");
@@ -105,7 +105,7 @@ public class ValidadorPessoaTest {
         Pessoa pessoa = new Pessoa();
         pessoa.setNome("Paulo Egito");
         pessoa.setEmail("pEgito@email.com");
-        pessoa.setCpf("7745678901");
+        pessoa.setCpf("77456789012");
         pessoa.setTelefone("11999999999");
         pessoa.setData_nascimento(LocalDate.of(1990, 5, 20));
         pessoa.setEndereco(" "); // vazio
@@ -120,7 +120,7 @@ public class ValidadorPessoaTest {
         Pessoa pessoa = new Pessoa();
         pessoa.setNome("Paulo Egito");
         pessoa.setEmail("pEgito@email.com");
-        pessoa.setCpf("7745678901");
+        pessoa.setCpf("77456789012");
         pessoa.setTelefone("11999999999");
         pessoa.setData_nascimento(LocalDate.of(1990, 5, 20));
         pessoa.setEndereco("Cais do Apolo, 77");
@@ -135,7 +135,7 @@ public class ValidadorPessoaTest {
         Pessoa pessoa = new Pessoa();
         pessoa.setNome("Paulo Egito");
         pessoa.setEmail("pEgito@email.com");
-        pessoa.setCpf("7745678901");
+        pessoa.setCpf("77456789012");
         pessoa.setTelefone("11999999999");
         pessoa.setData_nascimento(LocalDate.of(1990, 5, 20));
         pessoa.setEndereco("Cais do Apolo, 77");
