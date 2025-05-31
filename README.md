@@ -97,7 +97,12 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
 <details>
 <summary>📍 Entrega 4</summary>
 
-- Projeto final consolidado  
+- Projeto final consolidado
+- **Diagrama de Classes atualizado**  
+![Class Diagram2](https://github.com/user-attachments/assets/98c104f2-6cdc-4da7-b0d5-2076a3897b62)
+
+
+
 - Testes completos e validação com usuários  
 - Documentação e apresentação final  
 - Preparação para publicação ou uso real
