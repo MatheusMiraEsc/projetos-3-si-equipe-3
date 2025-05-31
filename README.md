@@ -130,7 +130,7 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
 
 ---
 
-## ▶️ Passos para executar o projeto
+## ▶️ Passos para executar o projeto VS Code
 
 1. **Clone o repositório:**
 
@@ -147,9 +147,14 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
    ```
 
 3. **Configure o banco de dados:**
-  Abra o arquivo schema.sql na pasta `src/main/java/ingressart/teatro/database` e execute os comandos SQL contidos nele no terminal do PostgreSQL (psql) para criar as tabelas necessárias.
+  Abra o arquivo schema.sql na pasta `src/main/java/ingressart/teatro/database` e execute os comandos SQL contidos nele no terminal do arquivo `App.Java` para criar as tabelas necessárias.
+   ```
+   psql -U postgres -d ingressart -f database/create_tables.sql
+   psql -U postgres -d ingressart -f database/schema.sql
+   psql -U postgres -d ingressart -f database/update_schema.sql
+    ```
 
-4. **Compile o projeto:**
+5. **Compile o projeto:**
    No terminal da sua IDE, execute o seguinte comando para compilar o projeto:
    Antes, certifique-se de que o Maven está instalado e configurado corretamente e se você está na pasta raiz do projeto.
 
@@ -157,14 +162,18 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
    mvn clean install
    ```
 
-5. **Execute o projeto:**
+6. **Execute o projeto:**
     Após a compilação, execute o seguinte comando para iniciar o projeto:
   
     ```bash
-    java -jar target/ingressart-teatro-1.0.0.jar
+    mvn spring-boot:run    
     ```
-
-6. **Acesse o sistema:**
+    ou
+    ```
+   java -jar target/ingressart-teatro-1.0.0.jar
+    ```
+    
+8. **Acesse o sistema:**
     Após a execução, o sistema estará disponível no terminal :D
 
 ---
@@ -182,6 +191,46 @@ Ao iniciar o sistema, o usuário escolhe:
 Teatro (Administrador)
 
 - Menu disponível:
+- 1 - Sobre peças
+    - 1 - Cadastrar Peça
+    - 2 - Listar Peças
+    - 3 - Alterar Peça
+    - 4 - Desativar Peça
+    - 5 - Reativar Peça
+    - 6 - Deletar Peça
+    - 0 - Voltar para menu   
+- 2 - Cadastrar Sala
+    - Cadastro de Nova Sala
+    - Digite o nome da sala: 
+    - Digite a capacidade da sala (número de assentos): 
+- 3 - Cadastrar Sessão
+-   - --- Cadastro de Nova Sessão ---
+    - --- Lista de Peças ---
+    - ID: 1 | Nome:  | Descrição: | Data:  | Hora:  | Valor: 
+    - Status - 
+    - ID: 2 | Nome:  | Descrição:  | Data:  | Hora:  | Valor: 
+    - Status -
+    - Digite o ID da peça (evento) para criar a sessão: 2
+    
+    - Salas disponíveis:
+    -  1 - 
+    -  2 - 
+    -  3 - 
+    
+    - Digite o ID da sala escolhida: 
+    
+    - Agora, informe a data e hora da sessão:
+    - Dia: 10
+    - Mês: 10
+    - Ano: 2025
+    - Hora (0-23): 10
+    - Minuto (0-59): 10
+
+    - Preço do ingresso: 10
+- 4 - Listar Salas
+- 5 - Ver compradores por peça
+- 6 - Ver usuários cadastrados
+- 0 - Sair
 - Cadastrar Peça
   - Listar Peças
   - Editar Peça
