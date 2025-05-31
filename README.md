@@ -100,7 +100,10 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
 - Projeto final consolidado  
 - Testes completos e validação com usuários  
 - Documentação e apresentação final  
-- Preparação para publicação ou uso real  
+- Preparação para publicação ou uso real
+
+- **Screencast**
+ [YouTube](https://www.youtube.com/watch?v=doPFZZxHdfw)
 
 </details>
 
