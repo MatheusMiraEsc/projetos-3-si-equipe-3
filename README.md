@@ -103,12 +103,16 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
 
 
 
-- Testes completos e validação com usuários  
-- Documentação e apresentação final  
-- Preparação para publicação ou uso real
+- Testes completos e validação com usuários
+-  **Uso de Issue/bug tracker GitHub**
+  - ![image](https://github.com/user-attachments/assets/2dabe9a4-ba2e-4ae1-b68f-5acef9d61093)
+  - ![image](https://github.com/user-attachments/assets/ec15b523-7843-46c9-82ad-e3e23b1c8e70)
+
 
 - **Screencast**
  [YouTube](https://www.youtube.com/watch?v=doPFZZxHdfw)
+
+- Documentação e apresentação final (esta na orientação: Ingressart - Como rodar? 
 
 </details>
 
