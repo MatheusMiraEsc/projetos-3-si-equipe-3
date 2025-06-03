@@ -151,12 +151,10 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
    ```
 
 3. **Configure o banco de dados:**
-  Entre no diretório `src/main/java/ingressart/teatro` e logo em seguida, no terminal do VSCODE, execute os seguintes comandos abaixos para criar as tabelas e o esquema do banco de dados:
+  Entre no diretório `src/main/java/ingressart/teatro` e logo em seguida, no terminal do VSCODE, execute o comando abaixo para criar as tabelas:
 
    ```bash
    psql -U postgres -d ingressart -f database/create_tables.sql
-   psql -U postgres -d ingressart -f database/schema.sql
-   psql -U postgres -d ingressart -f database/update_schema.sql
     ```
 
 4. **Compile o projeto:**
