@@ -151,33 +151,37 @@ Nosso time é formado por seis integrantes. Abaixo, estão seus respectivos GitH
    ```
 
 3. **Configure o banco de dados:**
-  Abra o arquivo schema.sql na pasta `src/main/java/ingressart/teatro/database` e execute os comandos SQL contidos nele no terminal do arquivo `App.Java` para criar as tabelas necessárias.
-   ```
+  Entre no diretório `src/main/java/ingressart/teatro` e logo em seguida, no terminal do VSCODE, execute os seguintes comandos abaixos para criar as tabelas e o esquema do banco de dados:
+
+   ```bash
    psql -U postgres -d ingressart -f database/create_tables.sql
    psql -U postgres -d ingressart -f database/schema.sql
    psql -U postgres -d ingressart -f database/update_schema.sql
     ```
 
-5. **Compile o projeto:**
+4. **Compile o projeto:**
    No terminal da sua IDE, execute o seguinte comando para compilar o projeto:
-   Antes, certifique-se de que o Maven está instalado e configurado corretamente e se você está na pasta raiz do projeto.
+   Antes, certifique-se de que o Maven está instalado e configurado corretamente e se você está na pasta raiz do projeto:
+   `projetos-3-si-equipe-3/`.
 
    ```bash
    mvn clean install
    ```
 
-6. **Execute o projeto:**
+5. **Execute o projeto:**
     Após a compilação, execute o seguinte comando para iniciar o projeto:
   
     ```bash
     mvn spring-boot:run    
     ```
-    ou
-    ```
+
+    ou então, se preferir, você pode executar o JAR gerado:
+
+    ```bash
    java -jar target/ingressart-teatro-1.0.0.jar
     ```
-    
-8. **Acesse o sistema:**
+
+6. **Acesse o sistema:**
     Após a execução, o sistema estará disponível no terminal :D
 
 ---
