@@ -1,68 +1,110 @@
--- Criação da tabela sala
+-- Criação do Banco de Dados
+CREATE DATABASE ingressart;
+
+-- Conectar ao banco ingressart e criar as tabelas:
+
+-- Tabela pessoa
+CREATE TABLE pessoa (
+    id_pessoa SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    cpf VARCHAR(14) NOT NULL UNIQUE,
+    telefone VARCHAR(15),
+    data_nascimento DATE,
+    endereco VARCHAR(200),
+    senha VARCHAR(100) NOT NULL,
+    tipo_usuario VARCHAR(20) NOT NULL -- ADMINISTRADOR ou CLIENTE
+);
+
+-- Tabela sala
 CREATE TABLE sala (
     id_sala SERIAL PRIMARY KEY,
     capacidade INTEGER NOT NULL,
     tipo VARCHAR(50) NOT NULL
 );
 
--- Criação da tabela evento
+-- Tabela evento
 CREATE TABLE evento (
     id_evento SERIAL PRIMARY KEY,
-    status BOOLEAN,
-    nome_evento VARCHAR(100),
+    status BOOLEAN DEFAULT TRUE, -- ativo ou arquivado
+    nome_evento VARCHAR(150) NOT NULL,
     descricao TEXT,
-    data_inicio TIMESTAMP,
-    data_fim TIMESTAMP,
+    data_inicio TIMESTAMP NOT NULL,
+    data_fim TIMESTAMP NOT NULL,
     categoria VARCHAR(50),
-    class_indicativa INTEGER,
-    id_sala INTEGER,
+    class_indicativa INT,
+    id_sala INT,
     FOREIGN KEY (id_sala) REFERENCES sala(id_sala)
 );
 
--- Criação da tabela sessao
+-- Tabela peca
+CREATE TABLE peca (
+    id_peca SERIAL PRIMARY KEY,
+    nome VARCHAR(150) NOT NULL,
+    descricao TEXT,
+    data DATE NOT NULL,
+    hora TIME NOT NULL,
+    valor_ingresso FLOAT NOT NULL
+);
+
+-- Tabela sessao
 CREATE TABLE sessao (
     id_sessao SERIAL PRIMARY KEY,
-    data_inicio TIMESTAMP,
-    data_fim TIMESTAMP,
-    preco_sessao FLOAT,
-    num_ingressos_disp INTEGER,
-    id_evento INTEGER,
-    id_sala INTEGER,
+    data_inicio TIMESTAMP NOT NULL,
+    data_fim TIMESTAMP NOT NULL,
+    preco_sessao FLOAT NOT NULL,
+    num_ingressos_disp INTEGER NOT NULL,
+    id_evento INT,
+    id_peca INT,
+    id_sala INT NOT NULL,
     FOREIGN KEY (id_evento) REFERENCES evento(id_evento),
+    FOREIGN KEY (id_peca) REFERENCES peca(id_peca),
     FOREIGN KEY (id_sala) REFERENCES sala(id_sala)
 );
 
--- Criação da tabela pessoa
-CREATE TABLE pessoa (
-    id_pessoa SERIAL PRIMARY KEY,
-    nome VARCHAR(100),
-    email VARCHAR(100) UNIQUE,
-    cpf VARCHAR(14) UNIQUE,
-    telefone VARCHAR(20),
-    data_nascimento DATE,
-    endereco TEXT,
-    senha VARCHAR(100),
-    tipo_usuario VARCHAR(20)
-);
-
--- Criação da tabela venda
-CREATE TABLE venda (
-    id_venda SERIAL PRIMARY KEY,
-    data_venda TIMESTAMP,
-    forma_pagamento VARCHAR(20),
-    id_cliente INTEGER,
-    FOREIGN KEY (id_cliente) REFERENCES pessoa(id_pessoa)
-);
-
--- Criação da tabela ingresso
+-- Tabela ingresso
 CREATE TABLE ingresso (
     id_ingresso SERIAL PRIMARY KEY,
     id_assento INTEGER,
-    tipo_ingresso VARCHAR(20),
+    tipo_ingresso VARCHAR(50),
     preco_ingresso FLOAT,
-    status BOOLEAN,
-    id_cliente INTEGER,
-    id_sessao INTEGER,
+    status BOOLEAN DEFAULT TRUE,
+    id_cliente INT,
+    id_sessao INT,
+    id_peca INT,
     FOREIGN KEY (id_cliente) REFERENCES pessoa(id_pessoa),
-    FOREIGN KEY (id_sessao) REFERENCES sessao(id_sessao)
+    FOREIGN KEY (id_sessao) REFERENCES sessao(id_sessao),
+    FOREIGN KEY (id_peca) REFERENCES peca(id_peca)
+);
+
+-- Tabela venda
+CREATE TABLE venda (
+    id_venda SERIAL PRIMARY KEY,
+    data_venda TIMESTAMP NOT NULL,
+    forma_pagamento VARCHAR(50),
+    id_cliente INT,
+    FOREIGN KEY (id_cliente) REFERENCES pessoa(id_pessoa)
+);
+
+-- Tabela pagamento
+CREATE TABLE pagamento (
+    id_pagamento SERIAL PRIMARY KEY,
+    id_venda INT,
+    valor_pago FLOAT,
+    data_pagamento TIMESTAMP NOT NULL,
+    status VARCHAR(20),
+    metodo_pagamento VARCHAR(50),
+    FOREIGN KEY (id_venda) REFERENCES venda(id_venda)
+);
+
+-- Tabela review
+CREATE TABLE review (
+    id_review SERIAL PRIMARY KEY,
+    id_cliente INT NOT NULL,
+    id_peca INT NOT NULL,
+    rating INTEGER NOT NULL CHECK (rating >= 1 AND rating <= 5),
+    comentario TEXT,
+    data_review TIMESTAMP NOT NULL,
+    FOREIGN KEY (id_cliente) REFERENCES pessoa(id_pessoa),
+    FOREIGN KEY (id_peca) REFERENCES peca(id_peca)
 );
