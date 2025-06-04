@@ -1,4 +1,4 @@
--- Drop existing tables if they exist (ordem importante por causa das FKs)
+-- Drop existing tables if they exist
 DROP TABLE IF EXISTS ingresso CASCADE;
 DROP TABLE IF EXISTS sessao CASCADE;
 DROP TABLE IF EXISTS evento CASCADE;
@@ -6,11 +6,8 @@ DROP TABLE IF EXISTS peca CASCADE;
 DROP TABLE IF EXISTS sala CASCADE;
 DROP TABLE IF EXISTS pessoa CASCADE;
 DROP TABLE IF EXISTS venda CASCADE;
-DROP TABLE IF EXISTS pagamento CASCADE;
-DROP TABLE IF EXISTS review CASCADE;
 
--- Recriação das tabelas
-
+-- Create tables in the correct order
 CREATE TABLE pessoa (
     id_pessoa SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
@@ -38,29 +35,13 @@ CREATE TABLE peca (
     valor_ingresso FLOAT NOT NULL
 );
 
-CREATE TABLE evento (
-    id_evento SERIAL PRIMARY KEY,
-    status BOOLEAN DEFAULT TRUE,
-    nome_evento VARCHAR(150) NOT NULL,
-    descricao TEXT,
-    data_inicio TIMESTAMP NOT NULL,
-    data_fim TIMESTAMP NOT NULL,
-    categoria VARCHAR(50),
-    class_indicativa INT,
-    id_sala INT,
-    FOREIGN KEY (id_sala) REFERENCES sala(id_sala)
-);
-
 CREATE TABLE sessao (
     id_sessao SERIAL PRIMARY KEY,
     data_inicio TIMESTAMP NOT NULL,
-    data_fim TIMESTAMP NOT NULL,
     preco_sessao FLOAT NOT NULL,
     num_ingressos_disp INTEGER NOT NULL,
-    id_evento INT,
-    id_peca INT,
-    id_sala INT NOT NULL,
-    FOREIGN KEY (id_evento) REFERENCES evento(id_evento),
+    id_peca INTEGER NOT NULL,
+    id_sala INTEGER NOT NULL,
     FOREIGN KEY (id_peca) REFERENCES peca(id_peca),
     FOREIGN KEY (id_sala) REFERENCES sala(id_sala)
 );
@@ -72,10 +53,8 @@ CREATE TABLE ingresso (
     preco_ingresso FLOAT,
     status BOOLEAN DEFAULT TRUE,
     id_cliente INTEGER,
-    id_sessao INTEGER,
     id_peca INTEGER,
     FOREIGN KEY (id_cliente) REFERENCES pessoa(id_pessoa),
-    FOREIGN KEY (id_sessao) REFERENCES sessao(id_sessao),
     FOREIGN KEY (id_peca) REFERENCES peca(id_peca)
 );
 
@@ -85,25 +64,4 @@ CREATE TABLE venda (
     forma_pagamento VARCHAR(50),
     id_cliente INTEGER,
     FOREIGN KEY (id_cliente) REFERENCES pessoa(id_pessoa)
-);
-
-CREATE TABLE pagamento (
-    id_pagamento SERIAL PRIMARY KEY,
-    id_venda INT,
-    valor_pago FLOAT,
-    data_pagamento TIMESTAMP NOT NULL,
-    status VARCHAR(20),
-    metodo_pagamento VARCHAR(50),
-    FOREIGN KEY (id_venda) REFERENCES venda(id_venda)
-);
-
-CREATE TABLE review (
-    id_review SERIAL PRIMARY KEY,
-    id_cliente INTEGER NOT NULL,
-    id_peca INTEGER NOT NULL,
-    rating INTEGER NOT NULL CHECK (rating >= 1 AND rating <= 5),
-    comentario TEXT,
-    data_review TIMESTAMP NOT NULL,
-    FOREIGN KEY (id_cliente) REFERENCES pessoa(id_pessoa),
-    FOREIGN KEY (id_peca) REFERENCES peca(id_peca)
 );
